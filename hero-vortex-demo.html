@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hero Vortex Demo</title>
+  <!-- اربط ملف الـ CSS (ضعه بجانب هذا الملف) -->
+  <link rel="stylesheet" href="hero-vortex.css">
+  <style>
+    body { margin: 0; font-family: "Cairo", system-ui, sans-serif; color: #1a1d3a; }
+    .hero-scene { min-height: 100vh; display: grid; place-items: center; }
+    .hero-content { text-align: center; padding: 2rem; max-width: 40rem; }
+    .hero-content h1 { font-size: clamp(2rem, 5vw, 3.5rem); margin: 0 0 1rem; }
+    .hero-content p { font-size: 1.1rem; line-height: 1.8; margin: 0; }
+  </style>
+</head>
+<body>
+  <section class="hero-scene">
+    <div class="hero-vortex"></div>
+    <div class="hero-content">
+      <h1>عنوان موقعك هنا</h1>
+      <p>المحتوى يظهر فوق الدوائر المتحركة. انسخ الكلاسات إلى موقعك وغيّر الألوان من المتغيرات في أعلى ملف الـ CSS.</p>
+    </div>
+  </section>
+</body>
+</html>
