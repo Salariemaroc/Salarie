@@ -127,6 +127,13 @@ footer a:hover{color:#fff}
 .dropdown:focus-within .dropdown-menu{display:flex}
 .dropdown-menu a{padding:10px 14px;border-radius:10px;color:var(--text2);white-space:nowrap}
 .dropdown-menu a:hover{background:var(--soft);color:var(--primary)}
+
+/* Hero proportions closer to the reference layout */
+.hero .container{max-width:1400px}
+.visual{padding:24px}
+.art-img{max-height:660px;object-fit:contain}
+.hero::before{background:repeating-radial-gradient(circle at 70% 40%,rgba(91,75,219,.10) 0 2px,transparent 2px 64px)}
+@media(min-width:601px){.hero-text h1{font-size:52px}}
 </style>
 </head>
 <body>
