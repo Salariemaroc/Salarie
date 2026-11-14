@@ -3,90 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Salarie | الوظائف والتوظيف بالمغرب</title>
-<meta name="description" content="ابحث عن وظيفة في المغرب، تابع أخبار التوظيف، وأنشئ سيرتك الذاتية بسهولة مع Salarie">
+<title>Salarie</title>
+<meta name="description" content="Salarie: حلول ذكية وبسيطة لكل ما تحتاجه">
 <style>
-:root{--primary:#5b4bdb;--primary-dark:#4338ca;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc;--soft:#ede9fe}
+:root{--primary:#5b4bdb;--primary-dark:#4338ca;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
 a{color:inherit;text-decoration:none}
-button,input,select,textarea{font-family:inherit;font-size:15px}
 .container{max-width:1200px;margin:auto;padding:0 24px}
 
 /* Header */
-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0}
-.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold}
+header{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;padding:16px 0}
+.nav-main{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.nav-right{display:flex;align-items:center;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold;color:var(--ink)}
 .logo-mark{width:40px;height:40px;flex-shrink:0}
-.menu{display:flex;gap:22px;flex-wrap:wrap}
-.menu a{color:#374151;font-size:15px}
-.menu a:hover{color:var(--primary)}
-
-/* Buttons */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:10px;border:none;cursor:pointer;font-weight:bold;transition:.2s}
-.btn-primary{background:var(--primary);color:#fff}
+.pill-links{display:flex;align-items:center;gap:22px;background:#f3f4f6;border-radius:999px;padding:11px 26px}
+.pill-links a{color:#374151;font-size:15px;white-space:nowrap}
+.pill-links a:hover{color:var(--primary)}
+.lang{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:11px 18px;font-size:15px;color:#374151}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 26px;border-radius:12px;font-weight:bold;font-size:16px;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 8px 20px rgba(91,75,219,.3)}
 .btn-primary:hover{background:var(--primary-dark)}
-.btn-soft{background:#fff;color:var(--primary);border:1px solid #c7d2fe}
-.btn-soft:hover{background:var(--soft)}
+.btn-soft{background:#fff;color:var(--ink);border:1px solid var(--line)}
+.btn-soft:hover{border-color:var(--primary);color:var(--primary)}
 
 /* Hero */
-.hero{background:linear-gradient(180deg,#f5f3ff,#eef2ff 60%,#f8fafc);padding:70px 0 60px;text-align:center}
-.hero h1{font-size:40px;line-height:1.5;margin-bottom:14px}
-.hero h1 span{color:var(--primary)}
-.hero p{color:#4b5563;font-size:18px;margin-bottom:32px}
-.search{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;grid-template-columns:2fr 1fr auto;gap:10px;max-width:880px;margin:auto;box-shadow:0 14px 40px rgba(91,75,219,.12)}
-.search input,.search select{border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;background:#fff}
-.hero-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:28px}
-.hero-stats div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 22px;font-size:14px;color:var(--muted)}
-.hero-stats b{display:block;font-size:22px;color:var(--ink)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,#ddd6fe 0%,transparent 45%),linear-gradient(180deg,#f5f3ff 0%,#eef2ff 60%,#f8fafc 100%);padding:70px 0 60px}
+.hero::before{content:"";position:absolute;inset:-20%;background:repeating-radial-gradient(circle at 75% 35%,rgba(91,75,219,.09) 0 2px,transparent 2px 46px);animation:rings 18s ease-in-out infinite;pointer-events:none}
+@keyframes rings{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,20px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+.hero .container{position:relative;z-index:1}
+#rotate{display:inline-block;transition:opacity .4s ease,transform .4s ease}
+#rotate.out{opacity:0;transform:translateY(-8px)}
+@media (prefers-reduced-motion: reduce){.hero::before{animation:none}}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero-text{text-align:right}
+.pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e0e7ff;color:var(--primary);padding:8px 18px;border-radius:999px;font-size:14px;font-weight:bold;margin-bottom:26px}
+.hero-text h1{font-size:46px;line-height:1.5;margin-bottom:18px}
+.hero-text h1 span{color:var(--primary)}
+.hero-text p{font-size:19px;color:#4b5563;max-width:560px;margin-bottom:34px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+.visual{position:relative;background:#fff;border-radius:28px;padding:18px;box-shadow:0 20px 50px rgba(91,75,219,.12);border:1px solid #ede9fe}
+.art-img{display:block;width:100%;height:auto;border-radius:20px}
+.art{height:280px;border-radius:20px;background:linear-gradient(135deg,#c7d2fe 0%,#ddd6fe 50%,#fbcfe8 100%);display:flex;align-items:center;justify-content:center;color:var(--primary-dark);font-weight:bold;font-size:18px;text-align:center;padding:20px}
+.float{position:absolute;background:#fff;border-radius:14px;padding:10px 16px;box-shadow:0 10px 25px rgba(0,0,0,.08);font-size:14px;display:flex;align-items:center;gap:10px}
+.float b{display:block;font-size:17px;color:var(--ink)}
+.float small{color:var(--muted)}
+.float .fi{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:16px}
+.float.a{top:-20px;right:-16px}
+.float.b{top:40px;left:-18px}
+.float.a .fi{background:#22c55e}
+.float.b .fi{background:var(--primary)}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:22px}
+.tile{border:1px solid var(--line);border-radius:12px;padding:12px 6px;text-align:center;font-size:14px;color:#374151;background:#fff}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.stat strong{display:block;font-size:24px;color:var(--ink);line-height:1.2}
+.stat span{font-size:14px;color:var(--muted)}
+.stat .si{width:42px;height:42px;border-radius:12px;background:#ede9fe;color:var(--primary);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 
 /* Sections */
-section{padding:70px 0}
+section{padding:80px 0}
 .alt{background:#fff}
-.title{font-size:30px;text-align:center;margin-bottom:10px}
-.lead{text-align:center;color:var(--muted);margin-bottom:34px}
+.title{text-align:center;margin-bottom:12px;font-size:32px}
+.lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,.06)}
+.icon{width:52px;height:52px;border-radius:12px;background:#ede9fe;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+.step-num{width:42px;height:42px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:14px}
+.quote{font-size:16px;color:#374151;margin-bottom:18px}
+.person{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.person small{color:var(--muted)}
 
-/* Jobs */
-.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
-.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;color:#374151}
-.chip:hover,.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
-.jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.job{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:.2s}
-.job:hover{box-shadow:0 10px 25px rgba(0,0,0,.06);transform:translateY(-3px)}
-.job h3{font-size:18px}
-.job .company{color:var(--muted);font-size:14px}
-.tags{display:flex;gap:8px;flex-wrap:wrap}
-.tag{background:var(--soft);color:var(--primary-dark);border-radius:8px;padding:3px 10px;font-size:13px}
-.job .meta{color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
-.job .btn{padding:8px 16px;font-size:14px}
-.empty{text-align:center;color:var(--muted);grid-column:1/-1;padding:30px}
+/* Pricing */
+.plan{text-align:center;display:flex;flex-direction:column}
+.plan .price{font-size:40px;font-weight:bold;color:var(--primary);margin:14px 0 4px}
+.plan .price small{font-size:15px;color:var(--muted)}
+.plan ul{list-style:none;margin:20px 0 26px;text-align:right;flex:1}
+.plan li{padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.plan li::before{content:"✓ ";color:var(--primary);font-weight:bold}
+.featured{border:2px solid var(--primary);position:relative}
+.featured::after{content:"الأكثر طلباً";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:4px 14px;border-radius:999px;font-size:13px}
 
-/* News */
-.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
-.news-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
-.news-card small{color:var(--primary);font-weight:bold}
-.news-card h3{margin:8px 0;font-size:18px}
-.news-card p{color:var(--muted);font-size:15px}
+/* FAQ */
+.faq{max-width:760px;margin:auto}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:bold;font-size:17px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:left;color:var(--primary);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:10px;color:var(--muted)}
 
-/* Forms and CV */
-.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
-.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
-.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.field label{font-size:14px;color:#374151;font-weight:bold}
-.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:#fff;width:100%}
-.field textarea{min-height:80px;resize:vertical}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.note{font-size:13px;color:var(--muted);margin-top:6px}
-.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
-#cv-preview{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;min-height:520px}
-#cv-preview h2{font-size:24px}
-#cv-preview .role{color:var(--primary);font-weight:bold;margin-bottom:6px}
-#cv-preview .info{font-size:14px;color:var(--muted);margin-bottom:14px}
-#cv-preview h4{border-bottom:2px solid var(--primary);padding-bottom:4px;margin:18px 0 8px}
-#cv-preview p{white-space:pre-line;font-size:15px}
-.ok{display:none;background:#dcfce7;color:#166534;border-radius:10px;padding:12px 14px;margin-top:14px;font-size:15px}
-.wa{display:inline-block;margin-top:16px;color:#15803d;font-weight:bold}
+/* CTA */
+.cta{background:#1e1b4b;color:#fff;text-align:center;padding:70px 20px}
+.cta h2{font-size:30px;margin-bottom:12px}
+.cta p{opacity:.85;margin-bottom:28px}
+.cta .btn-primary{background:#fff;color:var(--primary);box-shadow:none}
 
 /* Footer */
 footer{background:#0b1220;color:#cbd5e1;padding:50px 0 24px}
@@ -96,21 +116,18 @@ footer a{display:block;color:#cbd5e1;margin-bottom:8px;font-size:15px}
 footer a:hover{color:#fff}
 .copy{text-align:center;border-top:1px solid #1f2937;padding-top:20px;font-size:14px;color:#94a3b8}
 
-/* Printing: only the CV is printed or saved as PDF */
-@media print{
-  body *{visibility:hidden}
-  #cv-preview,#cv-preview *{visibility:visible}
-  #cv-preview{position:absolute;top:0;left:0;width:100%;border:none}
-}
-
 @media(max-width:900px){
-  .two{grid-template-columns:1fr}
-  .search{grid-template-columns:1fr}
-  .hero h1{font-size:30px}
-  .menu{display:none}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-text{text-align:center}
+  .hero-text p{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pill-links{display:none}
 }
 @media(max-width:600px){
-  .grid2{grid-template-columns:1fr}
+  .hero-text h1{font-size:30px}
+  .title{font-size:26px}
+  .float.b{display:none}
 }
 </style>
 </head>
@@ -118,190 +135,166 @@ footer a:hover{color:#fff}
 
 <header>
   <div class="container nav">
-    <a class="logo" href="#">
-      <svg class="logo-mark" viewBox="0 0 120 120" aria-hidden="true">
-        <defs>
-          <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0" stop-color="#5b4bdb"/>
-            <stop offset="1" stop-color="#8b7cf6"/>
-          </linearGradient>
-        </defs>
-        <rect width="120" height="120" rx="30" fill="url(#lbg)"/>
-        <path d="M84 38 C76 28 44 28 42 46 C40 60 80 60 80 76 C80 92 46 94 36 82" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="92" cy="26" r="7" fill="#fbbf24"/>
-      </svg>
-      <span>Salarie</span>
-    </a>
-    <nav class="menu">
-      <a href="#jobs">الوظائف</a>
-      <a href="#news">الأخبار</a>
-      <a href="#cv">السيرة الذاتية</a>
-      <a href="#register">التسجيل</a>
-    </nav>
-    <a class="btn btn-primary" href="#register">سجّل الآن</a>
+    <div class="nav-main">
+      <a class="logo" href="#">
+        <svg class="logo-mark" viewBox="0 0 120 120" aria-hidden="true">
+          <defs>
+            <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5b4bdb"/>
+              <stop offset="1" stop-color="#8b7cf6"/>
+            </linearGradient>
+          </defs>
+          <rect width="120" height="120" rx="30" fill="url(#lbg)"/>
+          <path d="M84 38 C76 28 44 28 42 46 C40 60 80 60 80 76 C80 92 46 94 36 82" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="92" cy="26" r="7" fill="#fbbf24"/>
+        </svg>
+        <span>Salarie</span>
+      </a>
+      <nav class="pill-links">
+        <a href="#features">الميزات</a>
+        <a href="#steps">الخطوات</a>
+        <a href="#testimonials">آراء</a>
+        <a href="#pricing">الأسعار</a>
+        <a href="#faq">الأسئلة</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <span class="lang">العربية <span>⌄</span></span>
+      <a class="btn btn-primary" href="#contact">ابدأ الآن ←</a>
+    </div>
   </div>
 </header>
 
 <div class="hero">
-  <div class="container">
-    <h1>ابحث عن <span>وظيفتك القادمة</span><br>في المغرب</h1>
-    <p>فرص عمل في مختلف القطاعات، وأدوات تساعدك تتقدم بثقة.</p>
-    <div class="search">
-      <input id="q" type="text" placeholder="المسمى الوظيفي أو اسم الشركة...">
-      <select id="city">
-        <option value="">كل المدن</option>
-        <option>الدار البيضاء</option>
-        <option>الرباط</option>
-        <option>طنجة</option>
-        <option>مراكش</option>
-        <option>فاس</option>
-        <option>أكادير</option>
-        <option>عن بعد</option>
-      </select>
-      <button class="btn btn-primary" id="searchBtn">ابحث</button>
+  <div class="container hero-grid">
+
+    <div class="hero-text">
+      <span class="pill">✦ مرحباً بكم في Salarie</span>
+      <h1>حلول ذكية وبسيطة<br><span id="rotate">لكل ما تحتاجه</span></h1>
+      <p>اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يختارك الزائر.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#contact">ابدأ مجاناً ←</a>
+        <a class="btn btn-soft" href="#steps">شاهد كيف يعمل</a>
+      </div>
     </div>
-    <div class="hero-stats">
-      <div><b id="jobCount">0</b>وظيفة منشورة</div>
-      <div><b>8</b>قطاعات</div>
-      <div><b>مجاني</b>إنشاء السيرة الذاتية</div>
+
+    <div class="visual">
+      <img class="art-img" src="hero-teachers.jpg" alt="مجموعة من المعلمين والمعلمات يسيرون معاً">
     </div>
+
+  </div>
+
+  <div class="container stats">
+    <div class="stat"><div><strong>4.9/5</strong><span>تقييم الزبائن</span></div><div class="si">★</div></div>
+    <div class="stat"><div><strong>+60</strong><span>خدمة متوفرة</span></div><div class="si">⚙</div></div>
+    <div class="stat"><div><strong>3</strong><span>لغات</span></div><div class="si">文</div></div>
+    <div class="stat"><div><strong>24/7</strong><span>دعم متواصل</span></div><div class="si">☎</div></div>
   </div>
 </div>
 
-<section id="jobs" class="alt">
+<section id="features">
   <div class="container">
-    <h2 class="title">أحدث الوظائف</h2>
-    <p class="lead">اختر قطاعاً، أو ابحث بالكلمات المفتاحية والمدينة</p>
-    <div class="chips" id="chips"></div>
-    <div class="jobs" id="jobList"></div>
-  </div>
-</section>
-
-<section id="news">
-  <div class="container">
-    <h2 class="title">أخبار التوظيف</h2>
-    <p class="lead">نصائح ومستجدات تساعدك في بحثك عن عمل</p>
-    <div class="news">
-      <article class="news-card">
-        <small>نصائح</small>
-        <h3>كيف تكتب سيرة ذاتية تلفت انتباه المشغّل</h3>
-        <p>اكتب هنا ملخصاً قصيراً للمقال. ابدأ بأهم خبراتك، واستعمل أرقاماً واضحة كلما أمكن.</p>
-      </article>
-      <article class="news-card">
-        <small>مقابلات</small>
-        <h3>أسئلة شائعة في مقابلات العمل وكيف تجاوبها</h3>
-        <p>اكتب هنا ملخصاً قصيراً للمقال. حضّر أمثلة من تجربتك قبل المقابلة.</p>
-      </article>
-      <article class="news-card">
-        <small>سوق الشغل</small>
-        <h3>المهارات الأكثر طلباً في سوق الشغل هذه السنة</h3>
-        <p>اكتب هنا ملخصاً قصيراً للمقال. انشر أخباراً حقيقية ومحدثة من مصادرها.</p>
-      </article>
+    <h2 class="title">ميزاتنا</h2>
+    <p class="lead">كل ما تحتاجه في مكان واحد، بتصميم واضح وسهل الاستعمال.</p>
+    <div class="grid">
+      <div class="card"><div class="icon">⚡</div><h3>سرعة في التنفيذ</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🎯</div><h3>نتائج دقيقة</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🔒</div><h3>أمان وخصوصية</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">📱</div><h3>يعمل على الهاتف</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🌍</div><h3>متعدد اللغات</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>سهل التخصيص</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
     </div>
   </div>
 </section>
 
-<section id="cv" class="alt">
+<section id="steps" class="alt">
   <div class="container">
-    <h2 class="title">أنشئ سيرتك الذاتية</h2>
-    <p class="lead">املأ المعلومات وشاهد النتيجة مباشرة، ثم احفظها كملف PDF</p>
-    <div class="two">
-      <div class="panel">
-        <form id="cvForm" onsubmit="return false">
-          <div class="field"><label for="cvName">الاسم الكامل</label><input id="cvName" type="text" placeholder="مثال: يوسف الإدريسي"></div>
-          <div class="field"><label for="cvRole">المسمى الوظيفي</label><input id="cvRole" type="text" placeholder="مثال: محاسب"></div>
-          <div class="grid2">
-            <div class="field"><label for="cvEmail">البريد الإلكتروني</label><input id="cvEmail" type="email" placeholder="name@email.com"></div>
-            <div class="field"><label for="cvPhone">الهاتف</label><input id="cvPhone" type="tel" placeholder="06..."></div>
-          </div>
-          <div class="field"><label for="cvCity">المدينة</label><input id="cvCity" type="text" placeholder="مثال: الرباط"></div>
-          <div class="field"><label for="cvSummary">ملخص عنك</label><textarea id="cvSummary" placeholder="جملتان أو ثلاث عن خبراتك وأهدافك"></textarea></div>
-          <div class="field"><label for="cvExp">الخبرات</label><textarea id="cvExp" placeholder="كل خبرة في سطر: المسمى - الشركة - المدة"></textarea></div>
-          <div class="field"><label for="cvEdu">التعليم</label><textarea id="cvEdu" placeholder="كل شهادة في سطر: الشهادة - المؤسسة - السنة"></textarea></div>
-          <div class="field"><label for="cvSkills">المهارات</label><input id="cvSkills" type="text" placeholder="مثال: Excel، التواصل، اللغة الفرنسية"></div>
-          <div class="actions">
-            <button class="btn btn-primary" id="printBtn" type="button">حفظ كـ PDF / طباعة</button>
-          </div>
-          <p class="note">المعلومات كتبقى فالمتصفح ديالك فقط، ماكتتخزنش فالموقع.</p>
-        </form>
+    <h2 class="title">كيفاش يخدم</h2>
+    <p class="lead">أربع خطوات بسيطة تبدا بيها في دقائق.</p>
+    <div class="grid">
+      <div class="card"><div class="step-num">1</div><h3>اختر الخدمة</h3><p>اكتب هنا وصف الخطوة الأولى.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>أدخل المعلومات</h3><p>اكتب هنا وصف الخطوة الثانية.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>راجع النتيجة</h3><p>اكتب هنا وصف الخطوة الثالثة.</p></div>
+      <div class="card"><div class="step-num">4</div><h3>حمّل وشارك</h3><p>اكتب هنا وصف الخطوة الرابعة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <h2 class="title">آراء الزبائن</h2>
+    <p class="lead">ضع هنا آراء حقيقية من زبائنك.</p>
+    <div class="grid">
+      <div class="card"><p class="quote">"اكتب هنا رأي الزبون الأول حول الخدمة."</p><div class="person"><div class="avatar">أ</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div></div>
+      <div class="card"><p class="quote">"اكتب هنا رأي الزبون الثاني حول الخدمة."</p><div class="person"><div class="avatar">س</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div></div>
+      <div class="card"><p class="quote">"اكتب هنا رأي الزبون الثالث حول الخدمة."</p><div class="person"><div class="avatar">م</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="container">
+    <h2 class="title">الأسعار</h2>
+    <p class="lead">اختر الخطة المناسبة لك، بدون التزامات خفية.</p>
+    <div class="grid" style="max-width:940px;margin:auto">
+      <div class="card plan">
+        <h3>الخطة الأساسية</h3>
+        <div class="price">مجاناً</div>
+        <ul><li>الميزات الأساسية</li><li>دعم عبر البريد</li><li>استعمال شخصي</li></ul>
+        <a class="btn btn-soft" href="#contact" style="justify-content:center">ابدأ مجاناً</a>
       </div>
-      <div>
-        <div id="cv-preview">
-          <h2 id="pName">اسمك الكامل</h2>
-          <div class="role" id="pRole">المسمى الوظيفي</div>
-          <div class="info" id="pInfo">البريد · الهاتف · المدينة</div>
-          <h4>الملخص</h4>
-          <p id="pSummary">ملخص قصير عنك...</p>
-          <h4>الخبرات</h4>
-          <p id="pExp">الخبرات تظهر هنا...</p>
-          <h4>التعليم</h4>
-          <p id="pEdu">الشهادات تظهر هنا...</p>
-          <h4>المهارات</h4>
-          <p id="pSkills">المهارات تظهر هنا...</p>
-        </div>
+      <div class="card plan featured">
+        <h3>الخطة المتقدمة</h3>
+        <div class="price">0 <small>/ شهرياً</small></div>
+        <ul><li>كل الميزات الأساسية</li><li>ميزات إضافية</li><li>دعم فني سريع</li></ul>
+        <a class="btn btn-primary" href="#contact" style="justify-content:center">اشترك الآن</a>
+      </div>
+      <div class="card plan">
+        <h3>الخطة الشاملة</h3>
+        <div class="price">0 <small>/ سنوياً</small></div>
+        <ul><li>كل ميزات المتقدمة</li><li>أولوية في الخدمة</li><li>دعم مخصص</li></ul>
+        <a class="btn btn-soft" href="#contact" style="justify-content:center">اختر هذه الخطة</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="register">
+<section id="faq">
   <div class="container">
-    <div class="panel" style="max-width:560px;margin:auto">
-      <h2 class="title" style="font-size:26px">إنشاء حساب</h2>
-      <p class="lead" style="margin-bottom:24px">سجّل لتتلقى أحدث الوظائف المناسبة لك</p>
-      <form id="regForm">
-        <div class="field"><label for="regName">الاسم الكامل</label><input id="regName" type="text" required></div>
-        <div class="grid2">
-          <div class="field"><label for="regEmail">البريد الإلكتروني</label><input id="regEmail" type="email" required></div>
-          <div class="field"><label for="regPhone">الهاتف</label><input id="regPhone" type="tel"></div>
-        </div>
-        <div class="grid2">
-          <div class="field">
-            <label for="regType">نوع الحساب</label>
-            <select id="regType">
-              <option>باحث عن عمل</option>
-              <option>شركة تبحث عن موظفين</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="regCity">المدينة</label>
-            <select id="regCity">
-              <option>الدار البيضاء</option>
-              <option>الرباط</option>
-              <option>طنجة</option>
-              <option>مراكش</option>
-              <option>فاس</option>
-              <option>أكادير</option>
-              <option>أخرى</option>
-            </select>
-          </div>
-        </div>
-        <div class="field"><label for="regPass">كلمة السر</label><input id="regPass" type="password" minlength="6" required></div>
-        <button class="btn btn-primary" type="submit" style="width:100%">سجّل الآن</button>
-      </form>
-      <div class="ok" id="regOk">شكراً، تم استلام طلبك. (نسخة تجريبية: الحسابات غادي تتحفظ بعد ربط قاعدة البيانات)</div>
-      <a class="wa" href="https://wa.me/212600000000" target="_blank" rel="noopener">للاشتراكات المدفوعة، تواصل معنا عبر واتساب</a>
+    <h2 class="title">الأسئلة الشائعة</h2>
+    <p class="lead">أجوبة على أكثر الأسئلة التي يطرحها الزبائن.</p>
+    <div class="faq">
+      <details open><summary>سؤال أول؟</summary><p>اكتب هنا الجواب على السؤال الأول.</p></details>
+      <details><summary>سؤال ثاني؟</summary><p>اكتب هنا الجواب على السؤال الثاني.</p></details>
+      <details><summary>سؤال ثالث؟</summary><p>اكتب هنا الجواب على السؤال الثالث.</p></details>
+      <details><summary>سؤال رابع؟</summary><p>اكتب هنا الجواب على السؤال الرابع.</p></details>
     </div>
   </div>
 </section>
+
+<div class="cta" id="contact">
+  <h2>جاهز تبدا؟</h2>
+  <p>أرسل لنا رسالة وغادي نجاوبوك في أقرب وقت.</p>
+  <a class="btn btn-primary" href="mailto:contact@example.com">تواصل معنا</a>
+</div>
 
 <footer>
   <div class="container">
     <div class="foot">
       <div>
         <h4>Salarie</h4>
-        <p>موقع الوظائف والتوظيف بالمغرب.</p>
+        <p>اكتب هنا وصفاً قصيراً عن موقعك.</p>
       </div>
       <div>
         <h4>الموقع</h4>
-        <a href="#jobs">الوظائف</a>
-        <a href="#news">الأخبار</a>
-        <a href="#cv">السيرة الذاتية</a>
+        <a href="#features">الميزات</a>
+        <a href="#steps">الخطوات</a>
+        <a href="#pricing">الأسعار</a>
       </div>
       <div>
-        <h4>الحساب</h4>
-        <a href="#register">التسجيل</a>
-        <a href="#register">تواصل معنا</a>
+        <h4>الدعم</h4>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">تواصل معنا</a>
       </div>
       <div>
         <h4>قانوني</h4>
@@ -314,107 +307,17 @@ footer a:hover{color:#fff}
 </footer>
 
 <script>
-  /* Sample jobs: replace with real data later (Supabase). */
-  const jobs = [
-    { title: "مطور واجهات أمامية", company: "شركة تقنية", city: "الدار البيضاء", type: "دوام كامل", category: "تقنية المعلومات", salary: "حسب الاتفاق" },
-    { title: "محاسب", company: "شركة تجارية", city: "الرباط", type: "دوام كامل", category: "المحاسبة والمالية", salary: "حسب الاتفاق" },
-    { title: "أستاذ لغة فرنسية", company: "مؤسسة تعليمية", city: "فاس", type: "دوام جزئي", category: "التعليم", salary: "حسب الاتفاق" },
-    { title: "مسؤول تسويق رقمي", company: "وكالة إعلانية", city: "مراكش", type: "دوام كامل", category: "التسويق", salary: "حسب الاتفاق" },
-    { title: "ممرض / ممرضة", company: "مصحة خاصة", city: "طنجة", type: "دوام كامل", category: "الصحة", salary: "حسب الاتفاق" },
-    { title: "مصمم جرافيك", company: "استوديو تصميم", city: "عن بعد", type: "عمل حر", category: "التصميم", salary: "حسب المشروع" },
-    { title: "مهندس مدني", company: "شركة بناء", city: "أكادير", type: "دوام كامل", category: "الهندسة", salary: "حسب الاتفاق" },
-    { title: "موظف مبيعات", company: "متجر إلكتروني", city: "الدار البيضاء", type: "دوام كامل", category: "المبيعات", salary: "حسب الاتفاق" }
-  ];
-
-  const categories = ["الكل", "تقنية المعلومات", "المحاسبة والمالية", "التعليم", "التسويق", "الصحة", "الهندسة", "المبيعات", "التصميم"];
-  let activeCategory = "الكل";
-
-  const $ = (id) => document.getElementById(id);
-
-  function renderChips() {
-    $("chips").innerHTML = categories.map(c =>
-      `<button class="chip ${c === activeCategory ? "active" : ""}" data-cat="${c}">${c}</button>`
-    ).join("");
-  }
-
-  function jobCard(j) {
-    return `<article class="job">
-      <h3>${j.title}</h3>
-      <div class="company">${j.company}</div>
-      <div class="tags">
-        <span class="tag">📍 ${j.city}</span>
-        <span class="tag">${j.type}</span>
-        <span class="tag">${j.category}</span>
-      </div>
-      <div class="meta">
-        <span>${j.salary}</span>
-        <a class="btn btn-primary" href="#register">قدّم الآن</a>
-      </div>
-    </article>`;
-  }
-
-  function renderJobs() {
-    const q = $("q").value.trim().toLowerCase();
-    const city = $("city").value;
-    const list = jobs.filter(j =>
-      (activeCategory === "الكل" || j.category === activeCategory) &&
-      (!city || j.city === city) &&
-      (!q || (j.title + " " + j.company + " " + j.category).toLowerCase().includes(q))
-    );
-    $("jobList").innerHTML = list.length
-      ? list.map(jobCard).join("")
-      : `<div class="empty">ما لقيناش وظائف مطابقة، جرّب كلمات أو مدينة أخرى.</div>`;
-  }
-
-  $("chips").addEventListener("click", (e) => {
-    const btn = e.target.closest(".chip");
-    if (!btn) return;
-    activeCategory = btn.dataset.cat;
-    renderChips();
-    renderJobs();
-  });
-  $("searchBtn").addEventListener("click", () => {
-    renderJobs();
-    location.hash = "#jobs";
-  });
-  $("q").addEventListener("input", renderJobs);
-  $("city").addEventListener("change", renderJobs);
-
-  /* CV live preview */
-  const cvFields = {
-    cvName: "pName", cvRole: "pRole", cvSummary: "pSummary",
-    cvExp: "pExp", cvEdu: "pEdu", cvSkills: "pSkills"
-  };
-  const emptyText = {
-    pName: "اسمك الكامل", pRole: "المسمى الوظيفي", pSummary: "ملخص قصير عنك...",
-    pExp: "الخبرات تظهر هنا...", pEdu: "الشهادات تظهر هنا...", pSkills: "المهارات تظهر هنا..."
-  };
-  function updateCV() {
-    Object.keys(cvFields).forEach(inputId => {
-      const value = $(inputId).value.trim();
-      $(cvFields[inputId]).textContent = value || emptyText[cvFields[inputId]];
-    });
-    const info = [$("cvEmail").value.trim(), $("cvPhone").value.trim(), $("cvCity").value.trim()]
-      .filter(Boolean).join(" · ");
-    $("pInfo").textContent = info || "البريد · الهاتف · المدينة";
-  }
-  document.querySelectorAll("#cvForm input, #cvForm textarea").forEach(el =>
-    el.addEventListener("input", updateCV)
-  );
-  $("printBtn").addEventListener("click", () => window.print());
-
-  /* Registration (demo only). Connect Supabase here later to save users. */
-  $("regForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    $("regOk").style.display = "block";
-    e.target.reset();
-  });
-
-  $("jobCount").textContent = jobs.length;
-  renderChips();
-  renderJobs();
-  updateCV();
+  const words = ["لكل ما تحتاجه", "بكل سهولة", "في أي وقت"];
+  let index = 0;
+  const rotateEl = document.getElementById("rotate");
+  setInterval(() => {
+    rotateEl.classList.add("out");
+    setTimeout(() => {
+      index = (index + 1) % words.length;
+      rotateEl.textContent = words[index];
+      rotateEl.classList.remove("out");
+    }, 400);
+  }, 2600);
 </script>
-
 </body>
 </html>
