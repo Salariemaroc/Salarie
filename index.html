@@ -146,13 +146,10 @@ header{background:linear-gradient(90deg,color-mix(in srgb,var(--hero-top) 35%,va
 header .container{position:relative;z-index:1}
 
 /* Hero background: dense rings laid on a tilted floor, like the reference */
-.hero::before{content:"";position:absolute;left:-20%;right:-20%;top:20%;bottom:-40%;background:repeating-radial-gradient(circle at 75% 100%,transparent 0 15px,rgba(91,75,219,.16) 15px 16px);transform:perspective(700px) rotateX(55deg);transform-origin:50% 0%;animation:floor 16s ease-in-out infinite alternate;pointer-events:none}
+.hero::before{content:"";position:absolute;left:-20%;right:-20%;top:20%;bottom:-40%;background:repeating-radial-gradient(circle at 50% 30%,transparent 0 15px,rgba(91,75,219,.16) 15px 16px);transform:perspective(700px) rotateX(55deg);transform-origin:50% 0%;animation:floor 16s ease-in-out infinite alternate;pointer-events:none}
 @keyframes floor{0%{transform:perspective(700px) rotateX(55deg) translateY(0)}100%{transform:perspective(700px) rotateX(55deg) translateY(-12px)}}
 @media (prefers-reduced-motion: reduce){.hero::before{animation:none}}
 
-/* Hero background: flat concentric rings centred on the text side, as in the photo */
-.hero::before{content:"";position:absolute;left:-10%;right:-10%;top:-10%;bottom:-10%;background:repeating-radial-gradient(circle at 72% 60%,transparent 0 17px,rgba(91,75,219,.14) 17px 18px);transform:none;animation:ringsFlat 20s ease-in-out infinite alternate;pointer-events:none}
-@keyframes ringsFlat{0%{transform:scale(1)}100%{transform:scale(1.03)}}
 </style>
 </head>
 <body>
