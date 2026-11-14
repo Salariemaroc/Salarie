@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salarie | الوظائف والتوظيف بالمغرب</title>
+<meta name="description" content="ابحث عن وظيفة في المغرب، تابع أخبار التوظيف، وأنشئ سيرتك الذاتية بسهولة مع Salarie">
+<style>
+:root{--primary:#5b4bdb;--primary-dark:#4338ca;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc;--soft:#ede9fe}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font-family:inherit;font-size:15px}
+.container{max-width:1200px;margin:auto;padding:0 24px}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:14px 0}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold}
+.logo-mark{width:40px;height:40px;flex-shrink:0}
+.menu{display:flex;gap:22px;flex-wrap:wrap}
+.menu a{color:#374151;font-size:15px}
+.menu a:hover{color:var(--primary)}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 22px;border-radius:10px;border:none;cursor:pointer;font-weight:bold;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark)}
+.btn-soft{background:#fff;color:var(--primary);border:1px solid #c7d2fe}
+.btn-soft:hover{background:var(--soft)}
+
+/* Hero */
+.hero{background:linear-gradient(180deg,#f5f3ff,#eef2ff 60%,#f8fafc);padding:70px 0 60px;text-align:center}
+.hero h1{font-size:40px;line-height:1.5;margin-bottom:14px}
+.hero h1 span{color:var(--primary)}
+.hero p{color:#4b5563;font-size:18px;margin-bottom:32px}
+.search{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:grid;grid-template-columns:2fr 1fr auto;gap:10px;max-width:880px;margin:auto;box-shadow:0 14px 40px rgba(91,75,219,.12)}
+.search input,.search select{border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%;background:#fff}
+.hero-stats{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.hero-stats div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 22px;font-size:14px;color:var(--muted)}
+.hero-stats b{display:block;font-size:22px;color:var(--ink)}
+
+/* Sections */
+section{padding:70px 0}
+.alt{background:#fff}
+.title{font-size:30px;text-align:center;margin-bottom:10px}
+.lead{text-align:center;color:var(--muted);margin-bottom:34px}
+
+/* Jobs */
+.chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+.chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;color:#374151}
+.chip:hover,.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.jobs{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.job{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;gap:10px;transition:.2s}
+.job:hover{box-shadow:0 10px 25px rgba(0,0,0,.06);transform:translateY(-3px)}
+.job h3{font-size:18px}
+.job .company{color:var(--muted);font-size:14px}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{background:var(--soft);color:var(--primary-dark);border-radius:8px;padding:3px 10px;font-size:13px}
+.job .meta{color:var(--muted);font-size:14px;display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.job .btn{padding:8px 16px;font-size:14px}
+.empty{text-align:center;color:var(--muted);grid-column:1/-1;padding:30px}
+
+/* News */
+.news{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.news-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px}
+.news-card small{color:var(--primary);font-weight:bold}
+.news-card h3{margin:8px 0;font-size:18px}
+.news-card p{color:var(--muted);font-size:15px}
+
+/* Forms and CV */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px}
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.field label{font-size:14px;color:#374151;font-weight:bold}
+.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:11px 13px;background:#fff;width:100%}
+.field textarea{min-height:80px;resize:vertical}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.note{font-size:13px;color:var(--muted);margin-top:6px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+#cv-preview{background:#fff;border:1px solid var(--line);border-radius:12px;padding:28px;min-height:520px}
+#cv-preview h2{font-size:24px}
+#cv-preview .role{color:var(--primary);font-weight:bold;margin-bottom:6px}
+#cv-preview .info{font-size:14px;color:var(--muted);margin-bottom:14px}
+#cv-preview h4{border-bottom:2px solid var(--primary);padding-bottom:4px;margin:18px 0 8px}
+#cv-preview p{white-space:pre-line;font-size:15px}
+.ok{display:none;background:#dcfce7;color:#166534;border-radius:10px;padding:12px 14px;margin-top:14px;font-size:15px}
+.wa{display:inline-block;margin-top:16px;color:#15803d;font-weight:bold}
+
+/* Footer */
+footer{background:#0b1220;color:#cbd5e1;padding:50px 0 24px}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-bottom:30px}
+footer h4{color:#fff;margin-bottom:12px}
+footer a{display:block;color:#cbd5e1;margin-bottom:8px;font-size:15px}
+footer a:hover{color:#fff}
+.copy{text-align:center;border-top:1px solid #1f2937;padding-top:20px;font-size:14px;color:#94a3b8}
+
+/* Printing: only the CV is printed or saved as PDF */
+@media print{
+  body *{visibility:hidden}
+  #cv-preview,#cv-preview *{visibility:visible}
+  #cv-preview{position:absolute;top:0;left:0;width:100%;border:none}
+}
+
+@media(max-width:900px){
+  .two{grid-template-columns:1fr}
+  .search{grid-template-columns:1fr}
+  .hero h1{font-size:30px}
+  .menu{display:none}
+}
+@media(max-width:600px){
+  .grid2{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="index.html">
+      <svg class="logo-mark" viewBox="0 0 120 120" aria-hidden="true">
+        <defs>
+          <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#5b4bdb"/>
+            <stop offset="1" stop-color="#8b7cf6"/>
+          </linearGradient>
+        </defs>
+        <rect width="120" height="120" rx="30" fill="url(#lbg)"/>
+        <path d="M84 38 C76 28 44 28 42 46 C40 60 80 60 80 76 C80 92 46 94 36 82" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="92" cy="26" r="7" fill="#fbbf24"/>
+      </svg>
+      <span>Salarie</span>
+    </a>
+    <nav class="menu">
+      <a href="#jobs">الوظائف</a>
+      <a href="#news">الأخبار</a>
+      <a href="#cv">السيرة الذاتية</a>
+      <a href="#register">التسجيل</a>
+    </nav>
+    <a class="btn btn-primary" href="#register">سجّل الآن</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="container">
+    <h1>ابحث عن <span>وظيفتك القادمة</span><br>في المغرب</h1>
+    <p>فرص عمل في مختلف القطاعات، وأدوات تساعدك تتقدم بثقة.</p>
+    <div class="search">
+      <input id="q" type="text" placeholder="المسمى الوظيفي أو اسم الشركة...">
+      <select id="city">
+        <option value="">كل المدن</option>
+        <option>الدار البيضاء</option>
+        <option>الرباط</option>
+        <option>طنجة</option>
+        <option>مراكش</option>
+        <option>فاس</option>
+        <option>أكادير</option>
+        <option>عن بعد</option>
+      </select>
+      <button class="btn btn-primary" id="searchBtn">ابحث</button>
+    </div>
+    <div class="hero-stats">
+      <div><b id="jobCount">0</b>وظيفة منشورة</div>
+      <div><b>8</b>قطاعات</div>
+      <div><b>مجاني</b>إنشاء السيرة الذاتية</div>
+    </div>
+  </div>
+</div>
+
+<section id="jobs" class="alt">
+  <div class="container">
+    <h2 class="title">أحدث الوظائف</h2>
+    <p class="lead">اختر قطاعاً، أو ابحث بالكلمات المفتاحية والمدينة</p>
+    <div class="chips" id="chips"></div>
+    <div class="jobs" id="jobList"></div>
+  </div>
+</section>
+
+<section id="news">
+  <div class="container">
+    <h2 class="title">أخبار التوظيف</h2>
+    <p class="lead">نصائح ومستجدات تساعدك في بحثك عن عمل</p>
+    <div class="news">
+      <article class="news-card">
+        <small>نصائح</small>
+        <h3>كيف تكتب سيرة ذاتية تلفت انتباه المشغّل</h3>
+        <p>اكتب هنا ملخصاً قصيراً للمقال. ابدأ بأهم خبراتك، واستعمل أرقاماً واضحة كلما أمكن.</p>
+      </article>
+      <article class="news-card">
+        <small>مقابلات</small>
+        <h3>أسئلة شائعة في مقابلات العمل وكيف تجاوبها</h3>
+        <p>اكتب هنا ملخصاً قصيراً للمقال. حضّر أمثلة من تجربتك قبل المقابلة.</p>
+      </article>
+      <article class="news-card">
+        <small>سوق الشغل</small>
+        <h3>المهارات الأكثر طلباً في سوق الشغل هذه السنة</h3>
+        <p>اكتب هنا ملخصاً قصيراً للمقال. انشر أخباراً حقيقية ومحدثة من مصادرها.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="cv" class="alt">
+  <div class="container">
+    <h2 class="title">أنشئ سيرتك الذاتية</h2>
+    <p class="lead">املأ المعلومات وشاهد النتيجة مباشرة، ثم احفظها كملف PDF</p>
+    <div class="two">
+      <div class="panel">
+        <form id="cvForm" onsubmit="return false">
+          <div class="field"><label for="cvName">الاسم الكامل</label><input id="cvName" type="text" placeholder="مثال: يوسف الإدريسي"></div>
+          <div class="field"><label for="cvRole">المسمى الوظيفي</label><input id="cvRole" type="text" placeholder="مثال: محاسب"></div>
+          <div class="grid2">
+            <div class="field"><label for="cvEmail">البريد الإلكتروني</label><input id="cvEmail" type="email" placeholder="name@email.com"></div>
+            <div class="field"><label for="cvPhone">الهاتف</label><input id="cvPhone" type="tel" placeholder="06..."></div>
+          </div>
+          <div class="field"><label for="cvCity">المدينة</label><input id="cvCity" type="text" placeholder="مثال: الرباط"></div>
+          <div class="field"><label for="cvSummary">ملخص عنك</label><textarea id="cvSummary" placeholder="جملتان أو ثلاث عن خبراتك وأهدافك"></textarea></div>
+          <div class="field"><label for="cvExp">الخبرات</label><textarea id="cvExp" placeholder="كل خبرة في سطر: المسمى - الشركة - المدة"></textarea></div>
+          <div class="field"><label for="cvEdu">التعليم</label><textarea id="cvEdu" placeholder="كل شهادة في سطر: الشهادة - المؤسسة - السنة"></textarea></div>
+          <div class="field"><label for="cvSkills">المهارات</label><input id="cvSkills" type="text" placeholder="مثال: Excel، التواصل، اللغة الفرنسية"></div>
+          <div class="actions">
+            <button class="btn btn-primary" id="printBtn" type="button">حفظ كـ PDF / طباعة</button>
+          </div>
+          <p class="note">المعلومات كتبقى فالمتصفح ديالك فقط، ماكتتخزنش فالموقع.</p>
+        </form>
+      </div>
+      <div>
+        <div id="cv-preview">
+          <h2 id="pName">اسمك الكامل</h2>
+          <div class="role" id="pRole">المسمى الوظيفي</div>
+          <div class="info" id="pInfo">البريد · الهاتف · المدينة</div>
+          <h4>الملخص</h4>
+          <p id="pSummary">ملخص قصير عنك...</p>
+          <h4>الخبرات</h4>
+          <p id="pExp">الخبرات تظهر هنا...</p>
+          <h4>التعليم</h4>
+          <p id="pEdu">الشهادات تظهر هنا...</p>
+          <h4>المهارات</h4>
+          <p id="pSkills">المهارات تظهر هنا...</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="register">
+  <div class="container">
+    <div class="panel" style="max-width:560px;margin:auto">
+      <h2 class="title" style="font-size:26px">إنشاء حساب</h2>
+      <p class="lead" style="margin-bottom:24px">سجّل لتتلقى أحدث الوظائف المناسبة لك</p>
+      <form id="regForm">
+        <div class="field"><label for="regName">الاسم الكامل</label><input id="regName" type="text" required></div>
+        <div class="grid2">
+          <div class="field"><label for="regEmail">البريد الإلكتروني</label><input id="regEmail" type="email" required></div>
+          <div class="field"><label for="regPhone">الهاتف</label><input id="regPhone" type="tel"></div>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label for="regType">نوع الحساب</label>
+            <select id="regType">
+              <option>باحث عن عمل</option>
+              <option>شركة تبحث عن موظفين</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="regCity">المدينة</label>
+            <select id="regCity">
+              <option>الدار البيضاء</option>
+              <option>الرباط</option>
+              <option>طنجة</option>
+              <option>مراكش</option>
+              <option>فاس</option>
+              <option>أكادير</option>
+              <option>أخرى</option>
+            </select>
+          </div>
+        </div>
+        <div class="field"><label for="regPass">كلمة السر</label><input id="regPass" type="password" minlength="6" required></div>
+        <button class="btn btn-primary" type="submit" style="width:100%">سجّل الآن</button>
+      </form>
+      <div class="ok" id="regOk">شكراً، تم استلام طلبك. (نسخة تجريبية: الحسابات غادي تتحفظ بعد ربط قاعدة البيانات)</div>
+      <a class="wa" href="https://wa.me/212600000000" target="_blank" rel="noopener">للاشتراكات المدفوعة، تواصل معنا عبر واتساب</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <h4>Salarie</h4>
+        <p>موقع الوظائف والتوظيف بالمغرب.</p>
+      </div>
+      <div>
+        <h4>الموقع</h4>
+        <a href="#jobs">الوظائف</a>
+        <a href="#news">الأخبار</a>
+        <a href="#cv">السيرة الذاتية</a>
+      </div>
+      <div>
+        <h4>الحساب</h4>
+        <a href="#register">التسجيل</a>
+        <a href="#register">تواصل معنا</a>
+      </div>
+      <div>
+        <h4>قانوني</h4>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستعمال</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Salarie. جميع الحقوق محفوظة.</div>
+  </div>
+</footer>
+
+<script>
+  /* Sample jobs: replace with real data later (Supabase). */
+  const jobs = [
+    { title: "مطور واجهات أمامية", company: "شركة تقنية", city: "الدار البيضاء", type: "دوام كامل", category: "تقنية المعلومات", salary: "حسب الاتفاق" },
+    { title: "محاسب", company: "شركة تجارية", city: "الرباط", type: "دوام كامل", category: "المحاسبة والمالية", salary: "حسب الاتفاق" },
+    { title: "أستاذ لغة فرنسية", company: "مؤسسة تعليمية", city: "فاس", type: "دوام جزئي", category: "التعليم", salary: "حسب الاتفاق" },
+    { title: "مسؤول تسويق رقمي", company: "وكالة إعلانية", city: "مراكش", type: "دوام كامل", category: "التسويق", salary: "حسب الاتفاق" },
+    { title: "ممرض / ممرضة", company: "مصحة خاصة", city: "طنجة", type: "دوام كامل", category: "الصحة", salary: "حسب الاتفاق" },
+    { title: "مصمم جرافيك", company: "استوديو تصميم", city: "عن بعد", type: "عمل حر", category: "التصميم", salary: "حسب المشروع" },
+    { title: "مهندس مدني", company: "شركة بناء", city: "أكادير", type: "دوام كامل", category: "الهندسة", salary: "حسب الاتفاق" },
+    { title: "موظف مبيعات", company: "متجر إلكتروني", city: "الدار البيضاء", type: "دوام كامل", category: "المبيعات", salary: "حسب الاتفاق" }
+  ];
+
+  const categories = ["الكل", "تقنية المعلومات", "المحاسبة والمالية", "التعليم", "التسويق", "الصحة", "الهندسة", "المبيعات", "التصميم"];
+  let activeCategory = "الكل";
+
+  const $ = (id) => document.getElementById(id);
+
+  function renderChips() {
+    $("chips").innerHTML = categories.map(c =>
+      `<button class="chip ${c === activeCategory ? "active" : ""}" data-cat="${c}">${c}</button>`
+    ).join("");
+  }
+
+  function jobCard(j) {
+    return `<article class="job">
+      <h3>${j.title}</h3>
+      <div class="company">${j.company}</div>
+      <div class="tags">
+        <span class="tag">📍 ${j.city}</span>
+        <span class="tag">${j.type}</span>
+        <span class="tag">${j.category}</span>
+      </div>
+      <div class="meta">
+        <span>${j.salary}</span>
+        <a class="btn btn-primary" href="#register">قدّم الآن</a>
+      </div>
+    </article>`;
+  }
+
+  function renderJobs() {
+    const q = $("q").value.trim().toLowerCase();
+    const city = $("city").value;
+    const list = jobs.filter(j =>
+      (activeCategory === "الكل" || j.category === activeCategory) &&
+      (!city || j.city === city) &&
+      (!q || (j.title + " " + j.company + " " + j.category).toLowerCase().includes(q))
+    );
+    $("jobList").innerHTML = list.length
+      ? list.map(jobCard).join("")
+      : `<div class="empty">ما لقيناش وظائف مطابقة، جرّب كلمات أو مدينة أخرى.</div>`;
+  }
+
+  $("chips").addEventListener("click", (e) => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    activeCategory = btn.dataset.cat;
+    renderChips();
+    renderJobs();
+  });
+  $("searchBtn").addEventListener("click", () => {
+    renderJobs();
+    location.hash = "#jobs";
+  });
+  $("q").addEventListener("input", renderJobs);
+  $("city").addEventListener("change", renderJobs);
+
+  /* CV live preview */
+  const cvFields = {
+    cvName: "pName", cvRole: "pRole", cvSummary: "pSummary",
+    cvExp: "pExp", cvEdu: "pEdu", cvSkills: "pSkills"
+  };
+  const emptyText = {
+    pName: "اسمك الكامل", pRole: "المسمى الوظيفي", pSummary: "ملخص قصير عنك...",
+    pExp: "الخبرات تظهر هنا...", pEdu: "الشهادات تظهر هنا...", pSkills: "المهارات تظهر هنا..."
+  };
+  function updateCV() {
+    Object.keys(cvFields).forEach(inputId => {
+      const value = $(inputId).value.trim();
+      $(cvFields[inputId]).textContent = value || emptyText[cvFields[inputId]];
+    });
+    const info = [$("cvEmail").value.trim(), $("cvPhone").value.trim(), $("cvCity").value.trim()]
+      .filter(Boolean).join(" · ");
+    $("pInfo").textContent = info || "البريد · الهاتف · المدينة";
+  }
+  document.querySelectorAll("#cvForm input, #cvForm textarea").forEach(el =>
+    el.addEventListener("input", updateCV)
+  );
+  $("printBtn").addEventListener("click", () => window.print());
+
+  /* Registration (demo only). Connect Supabase here later to save users. */
+  $("regForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    $("regOk").style.display = "block";
+    e.target.reset();
+  });
+
+  $("jobCount").textContent = jobs.length;
+  renderChips();
+  renderJobs();
+  updateCV();
+</script>
+
+</body>
+</html>
