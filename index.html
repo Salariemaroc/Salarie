@@ -4,87 +4,268 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salarie</title>
-<meta name="description" content="موقع Salarie">
+<meta name="description" content="Salarie: حلول بسيطة وسريعة لكل ما تحتاجه">
 <style>
+:root{--primary:#0f766e;--primary-2:#14b8a6;--ink:#111827;--muted:#6b7280;--line:#e5e7eb;--bg:#f8fafc}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Tahoma,Arial,sans-serif;color:#1f2937;line-height:1.7;background:#f8fafc}
-header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:10}
-nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:16px 20px}
-.logo{font-weight:bold;font-size:22px;color:#0f766e}
-nav a{color:#374151;text-decoration:none;margin-inline-start:18px}
-nav a:hover{color:#0f766e}
-.hero{text-align:center;padding:80px 20px;background:linear-gradient(135deg,#0f766e,#14b8a6);color:#fff}
-.hero h1{font-size:40px;margin-bottom:16px}
-.hero p{font-size:18px;max-width:600px;margin:0 auto 30px}
-.btn{display:inline-block;background:#fff;color:#0f766e;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:bold}
-section{max-width:1100px;margin:auto;padding:60px 20px}
-h2{text-align:center;font-size:30px;margin-bottom:10px}
-.sub{text-align:center;color:#6b7280;margin-bottom:40px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
-.card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:24px}
-.card h3{color:#0f766e;margin-bottom:8px}
-details{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:16px 20px;margin-bottom:12px}
-summary{cursor:pointer;font-weight:bold}
-footer{background:#111827;color:#d1d5db;text-align:center;padding:30px 20px}
-@media(max-width:600px){.hero h1{font-size:28px}h2{font-size:24px}}
+html{scroll-behavior:smooth}
+body{font-family:Tahoma,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.7}
+a{color:inherit;text-decoration:none}
+.container{max-width:1140px;margin:auto;padding:0 20px}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;padding:14px 0}
+.logo{font-size:24px;font-weight:bold;color:var(--primary)}
+.links{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+.links a{color:#374151;font-size:15px}
+.links a:hover{color:var(--primary)}
+.btn{display:inline-block;padding:11px 24px;border-radius:10px;font-weight:bold;font-size:15px;transition:.2s}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#115e59}
+.btn-light{background:#fff;color:var(--primary)}
+.btn-ghost{border:2px solid rgba(255,255,255,.7);color:#fff}
+.btn-outline{border:2px solid var(--primary);color:var(--primary)}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#0f766e 0%,#14b8a6 100%);color:#fff;padding:90px 0 70px;text-align:center}
+.badge{display:inline-block;background:rgba(255,255,255,.2);padding:6px 16px;border-radius:999px;font-size:14px;margin-bottom:20px}
+.hero h1{font-size:44px;line-height:1.4;margin-bottom:18px}
+.hero p{font-size:19px;max-width:640px;margin:0 auto 32px;opacity:.95}
+.hero-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:60px}
+.stat{background:rgba(255,255,255,.12);border-radius:14px;padding:20px}
+.stat strong{display:block;font-size:30px}
+.stat span{font-size:14px;opacity:.9}
+
+/* Sections */
+section{padding:80px 0}
+.alt{background:#fff}
+.title{text-align:center;margin-bottom:12px;font-size:32px}
+.lead{text-align:center;color:var(--muted);max-width:620px;margin:0 auto 46px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px}
+.card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:28px;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 10px 25px rgba(0,0,0,.06)}
+.icon{width:52px;height:52px;border-radius:12px;background:#ccfbf1;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:16px}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:15px}
+
+/* Steps */
+.step-num{width:42px;height:42px;border-radius:50%;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold;margin-bottom:14px}
+
+/* Testimonials */
+.quote{font-size:16px;color:#374151;margin-bottom:18px}
+.person{display:flex;align-items:center;gap:12px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--primary-2);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:bold}
+.person small{color:var(--muted)}
+
+/* Pricing */
+.plan{text-align:center;display:flex;flex-direction:column}
+.plan .price{font-size:40px;font-weight:bold;color:var(--primary);margin:14px 0 4px}
+.plan .price small{font-size:15px;color:var(--muted)}
+.plan ul{list-style:none;margin:20px 0 26px;text-align:right;flex:1}
+.plan li{padding:8px 0;border-bottom:1px solid var(--line);font-size:15px}
+.plan li::before{content:"✓ ";color:var(--primary);font-weight:bold}
+.featured{border:2px solid var(--primary);position:relative}
+.featured::after{content:"الأكثر طلباً";position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--primary);color:#fff;padding:4px 14px;border-radius:999px;font-size:13px}
+
+/* FAQ */
+.faq{max-width:760px;margin:auto}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:bold;font-size:17px;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";float:left;color:var(--primary);font-size:22px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:10px;color:var(--muted)}
+
+/* CTA */
+.cta{background:var(--ink);color:#fff;text-align:center;padding:70px 20px}
+.cta h2{font-size:30px;margin-bottom:12px}
+.cta p{opacity:.85;margin-bottom:28px}
+
+/* Footer */
+footer{background:#0b1220;color:#cbd5e1;padding:50px 0 24px}
+.foot{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px;margin-bottom:30px}
+footer h4{color:#fff;margin-bottom:12px}
+footer a{display:block;color:#cbd5e1;margin-bottom:8px;font-size:15px}
+footer a:hover{color:#fff}
+.copy{text-align:center;border-top:1px solid #1f2937;padding-top:20px;font-size:14px;color:#94a3b8}
+
+@media(max-width:700px){
+  .hero h1{font-size:30px}
+  .title{font-size:26px}
+  .links{gap:12px}
+  .stat strong{font-size:24px}
+}
 </style>
 </head>
 <body>
 
 <header>
-  <nav>
+  <div class="container nav">
     <div class="logo">Salarie</div>
-    <div>
+    <nav class="links">
       <a href="#features">الميزات</a>
-      <a href="#steps">كيفاش يخدم</a>
+      <a href="#steps">الخطوات</a>
+      <a href="#pricing">الأسعار</a>
       <a href="#faq">الأسئلة</a>
       <a href="#contact">تواصل</a>
-    </div>
-  </nav>
+      <a class="btn btn-primary" href="#contact">ابدأ مجاناً</a>
+    </nav>
+  </div>
 </header>
 
 <div class="hero">
-  <h1>مرحباً بكم في Salarie</h1>
-  <p>اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يهم الزائر.</p>
-  <a class="btn" href="#contact">ابدأ الآن</a>
+  <div class="container">
+    <span class="badge">✦ جديد عندنا</span>
+    <h1>حلول بسيطة وسريعة<br>لكل ما تحتاجه</h1>
+    <p>اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يختارك الزائر.</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="#contact">ابدأ الآن</a>
+      <a class="btn btn-ghost" href="#steps">شاهد كيف تعمل</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong>+100</strong><span>عميل راضٍ</span></div>
+      <div class="stat"><strong>+20</strong><span>خدمة متوفرة</span></div>
+      <div class="stat"><strong>4.9/5</strong><span>متوسط التقييم</span></div>
+      <div class="stat"><strong>24/7</strong><span>دعم متواصل</span></div>
+    </div>
+  </div>
 </div>
 
 <section id="features">
-  <h2>ميزاتنا</h2>
-  <p class="sub">ثلاث حاجات أساسية في موقعك</p>
-  <div class="grid">
-    <div class="card"><h3>الميزة الأولى</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
-    <div class="card"><h3>الميزة الثانية</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
-    <div class="card"><h3>الميزة الثالثة</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+  <div class="container">
+    <h2 class="title">ميزاتنا</h2>
+    <p class="lead">كل ما تحتاجه في مكان واحد، بتصميم واضح وسهل الاستعمال.</p>
+    <div class="grid">
+      <div class="card"><div class="icon">⚡</div><h3>سرعة في التنفيذ</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🎯</div><h3>نتائج دقيقة</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🔒</div><h3>أمان وخصوصية</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">📱</div><h3>يعمل على الهاتف</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🌍</div><h3>متعدد اللغات</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+      <div class="card"><div class="icon">🧩</div><h3>سهل التخصيص</h3><p>اكتب هنا شرحاً قصيراً لهذه الميزة.</p></div>
+    </div>
   </div>
 </section>
 
-<section id="steps">
-  <h2>كيفاش يخدم</h2>
-  <p class="sub">ثلاث خطوات بسيطة</p>
-  <div class="grid">
-    <div class="card"><h3>1. الخطوة الأولى</h3><p>اكتب هنا وصف الخطوة الأولى.</p></div>
-    <div class="card"><h3>2. الخطوة الثانية</h3><p>اكتب هنا وصف الخطوة الثانية.</p></div>
-    <div class="card"><h3>3. الخطوة الثالثة</h3><p>اكتب هنا وصف الخطوة الثالثة.</p></div>
+<section id="steps" class="alt">
+  <div class="container">
+    <h2 class="title">كيفاش يخدم</h2>
+    <p class="lead">أربع خطوات بسيطة تبدا بيها في دقائق.</p>
+    <div class="grid">
+      <div class="card"><div class="step-num">1</div><h3>اختر الخدمة</h3><p>اكتب هنا وصف الخطوة الأولى.</p></div>
+      <div class="card"><div class="step-num">2</div><h3>أدخل المعلومات</h3><p>اكتب هنا وصف الخطوة الثانية.</p></div>
+      <div class="card"><div class="step-num">3</div><h3>راجع النتيجة</h3><p>اكتب هنا وصف الخطوة الثالثة.</p></div>
+      <div class="card"><div class="step-num">4</div><h3>حمّل وشارك</h3><p>اكتب هنا وصف الخطوة الرابعة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="title">آراء الزبائن</h2>
+    <p class="lead">ضع هنا آراء حقيقية من زبائنك.</p>
+    <div class="grid">
+      <div class="card">
+        <p class="quote">"اكتب هنا رأي الزبون الأول حول الخدمة."</p>
+        <div class="person"><div class="avatar">أ</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div>
+      </div>
+      <div class="card">
+        <p class="quote">"اكتب هنا رأي الزبون الثاني حول الخدمة."</p>
+        <div class="person"><div class="avatar">س</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div>
+      </div>
+      <div class="card">
+        <p class="quote">"اكتب هنا رأي الزبون الثالث حول الخدمة."</p>
+        <div class="person"><div class="avatar">م</div><div><strong>اسم الزبون</strong><br><small>المدينة</small></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="alt">
+  <div class="container">
+    <h2 class="title">الأسعار</h2>
+    <p class="lead">اختر الخطة المناسبة لك، بدون التزامات خفية.</p>
+    <div class="grid" style="max-width:920px;margin:auto">
+      <div class="card plan">
+        <h3>الخطة الأساسية</h3>
+        <div class="price">مجاناً</div>
+        <ul>
+          <li>الميزات الأساسية</li>
+          <li>دعم عبر البريد</li>
+          <li>استعمال شخصي</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">ابدأ مجاناً</a>
+      </div>
+      <div class="card plan featured">
+        <h3>الخطة المتقدمة</h3>
+        <div class="price">0 <small>/ شهرياً</small></div>
+        <ul>
+          <li>كل الميزات الأساسية</li>
+          <li>ميزات إضافية</li>
+          <li>دعم فني سريع</li>
+        </ul>
+        <a class="btn btn-primary" href="#contact">اشترك الآن</a>
+      </div>
+      <div class="card plan">
+        <h3>الخطة الشاملة</h3>
+        <div class="price">0 <small>/ سنوياً</small></div>
+        <ul>
+          <li>كل ميزات المتقدمة</li>
+          <li>أولوية في الخدمة</li>
+          <li>دعم مخصص</li>
+        </ul>
+        <a class="btn btn-outline" href="#contact">اختر هذه الخطة</a>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="faq">
-  <h2>الأسئلة الشائعة</h2>
-  <p class="sub">أجوبة على أكثر الأسئلة</p>
-  <details><summary>سؤال أول؟</summary><p>اكتب الجواب هنا.</p></details>
-  <details><summary>سؤال ثاني؟</summary><p>اكتب الجواب هنا.</p></details>
-  <details><summary>سؤال ثالث؟</summary><p>اكتب الجواب هنا.</p></details>
+  <div class="container">
+    <h2 class="title">الأسئلة الشائعة</h2>
+    <p class="lead">أجوبة على أكثر الأسئلة التي يطرحها الزبائن.</p>
+    <div class="faq">
+      <details open><summary>سؤال أول؟</summary><p>اكتب هنا الجواب على السؤال الأول.</p></details>
+      <details><summary>سؤال ثاني؟</summary><p>اكتب هنا الجواب على السؤال الثاني.</p></details>
+      <details><summary>سؤال ثالث؟</summary><p>اكتب هنا الجواب على السؤال الثالث.</p></details>
+      <details><summary>سؤال رابع؟</summary><p>اكتب هنا الجواب على السؤال الرابع.</p></details>
+    </div>
+  </div>
 </section>
 
-<section id="contact" style="text-align:center">
-  <h2>تواصل معنا</h2>
-  <p class="sub">أرسل لنا رسالة وغادي نجاوبوك</p>
-  <p>ضع بريدك الإلكتروني هنا</p>
-</section>
+<div class="cta" id="contact">
+  <h2>جاهز تبدا؟</h2>
+  <p>أرسل لنا رسالة وغادي نجاوبوك في أقرب وقت.</p>
+  <a class="btn btn-light" href="mailto:contact@example.com">تواصل معنا</a>
+</div>
 
 <footer>
-  <p>© 2026 Salarie. جميع الحقوق محفوظة.</p>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <h4>Salarie</h4>
+        <p>اكتب هنا وصفاً قصيراً عن موقعك.</p>
+      </div>
+      <div>
+        <h4>الموقع</h4>
+        <a href="#features">الميزات</a>
+        <a href="#steps">الخطوات</a>
+        <a href="#pricing">الأسعار</a>
+      </div>
+      <div>
+        <h4>الدعم</h4>
+        <a href="#faq">الأسئلة الشائعة</a>
+        <a href="#contact">تواصل معنا</a>
+      </div>
+      <div>
+        <h4>قانوني</h4>
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستعمال</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 Salarie. جميع الحقوق محفوظة.</div>
+  </div>
 </footer>
 
 </body>
