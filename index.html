@@ -31,7 +31,13 @@ header{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border-bottom:
 .btn-soft:hover{border-color:var(--primary);color:var(--primary)}
 
 /* Hero */
-.hero{background:radial-gradient(circle at 80% 20%,#ddd6fe 0%,transparent 45%),linear-gradient(180deg,#f5f3ff 0%,#eef2ff 60%,#f8fafc 100%);padding:70px 0 60px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(circle at 80% 20%,#ddd6fe 0%,transparent 45%),linear-gradient(180deg,#f5f3ff 0%,#eef2ff 60%,#f8fafc 100%);padding:70px 0 60px}
+.hero::before{content:"";position:absolute;inset:-20%;background:repeating-radial-gradient(circle at 75% 35%,rgba(91,75,219,.09) 0 2px,transparent 2px 46px);animation:rings 18s ease-in-out infinite;pointer-events:none}
+@keyframes rings{0%{transform:translate(0,0) scale(1)}50%{transform:translate(-30px,20px) scale(1.04)}100%{transform:translate(0,0) scale(1)}}
+.hero .container{position:relative;z-index:1}
+#rotate{display:inline-block;transition:opacity .4s ease,transform .4s ease}
+#rotate.out{opacity:0;transform:translateY(-8px)}
+@media (prefers-reduced-motion: reduce){.hero::before{animation:none}}
 .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
 .hero-text{text-align:right}
 .pill{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid #e0e7ff;color:var(--primary);padding:8px 18px;border-radius:999px;font-size:14px;font-weight:bold;margin-bottom:26px}
@@ -163,7 +169,7 @@ footer a:hover{color:#fff}
 
     <div class="hero-text">
       <span class="pill">✦ مرحباً بكم في Salarie</span>
-      <h1>حلول ذكية وبسيطة<br><span>لكل ما تحتاجه</span></h1>
+      <h1>حلول ذكية وبسيطة<br><span id="rotate">لكل ما تحتاجه</span></h1>
       <p>اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يختارك الزائر.</p>
       <div class="hero-actions">
         <a class="btn btn-primary" href="#contact">ابدأ مجاناً ←</a>
@@ -307,5 +313,18 @@ footer a:hover{color:#fff}
   </div>
 </footer>
 
+<script>
+  const words = ["لكل ما تحتاجه", "بكل سهولة", "في أي وقت"];
+  let index = 0;
+  const rotateEl = document.getElementById("rotate");
+  setInterval(() => {
+    rotateEl.classList.add("out");
+    setTimeout(() => {
+      index = (index + 1) % words.length;
+      rotateEl.textContent = words[index];
+      rotateEl.classList.remove("out");
+    }, 400);
+  }, 2600);
+</script>
 </body>
 </html>
