@@ -172,6 +172,7 @@ footer a:hover{color:#fff}
   <div class="container">
     <h2 class="title">أحدث الوظائف</h2>
     <p class="lead">اختر قطاعاً، أو ابحث بالكلمات المفتاحية والمدينة</p>
+    <div class="chips" id="sectorChips"></div>
     <div class="chips" id="chips"></div>
     <div class="jobs" id="jobList"></div>
   </div>
@@ -316,20 +317,37 @@ footer a:hover{color:#fff}
 <script>
   /* Sample jobs: replace with real data later (Supabase). */
   const jobs = [
-    { title: "مطور واجهات أمامية", company: "شركة تقنية", city: "الدار البيضاء", type: "دوام كامل", category: "تقنية المعلومات", salary: "حسب الاتفاق" },
-    { title: "محاسب", company: "شركة تجارية", city: "الرباط", type: "دوام كامل", category: "المحاسبة والمالية", salary: "حسب الاتفاق" },
-    { title: "أستاذ لغة فرنسية", company: "مؤسسة تعليمية", city: "فاس", type: "دوام جزئي", category: "التعليم", salary: "حسب الاتفاق" },
-    { title: "مسؤول تسويق رقمي", company: "وكالة إعلانية", city: "مراكش", type: "دوام كامل", category: "التسويق", salary: "حسب الاتفاق" },
-    { title: "ممرض / ممرضة", company: "مصحة خاصة", city: "طنجة", type: "دوام كامل", category: "الصحة", salary: "حسب الاتفاق" },
-    { title: "مصمم جرافيك", company: "استوديو تصميم", city: "عن بعد", type: "عمل حر", category: "التصميم", salary: "حسب المشروع" },
-    { title: "مهندس مدني", company: "شركة بناء", city: "أكادير", type: "دوام كامل", category: "الهندسة", salary: "حسب الاتفاق" },
-    { title: "موظف مبيعات", company: "متجر إلكتروني", city: "الدار البيضاء", type: "دوام كامل", category: "المبيعات", salary: "حسب الاتفاق" }
+    { title: "مطور واجهات أمامية", sector: "private", company: "شركة تقنية", city: "الدار البيضاء", type: "دوام كامل", category: "تقنية المعلومات", salary: "حسب الاتفاق" },
+    { title: "محاسب", sector: "private", company: "شركة تجارية", city: "الرباط", type: "دوام كامل", category: "المحاسبة والمالية", salary: "حسب الاتفاق" },
+    { title: "أستاذ لغة فرنسية", sector: "public", company: "أكاديمية جهوية للتربية والتكوين", city: "فاس", type: "دوام جزئي", category: "التعليم", salary: "حسب الاتفاق" },
+    { title: "مسؤول تسويق رقمي", sector: "private", company: "وكالة إعلانية", city: "مراكش", type: "دوام كامل", category: "التسويق", salary: "حسب الاتفاق" },
+    { title: "ممرض / ممرضة", sector: "public", company: "مستشفى جهوي", city: "طنجة", type: "دوام كامل", category: "الصحة", salary: "حسب الاتفاق" },
+    { title: "مصمم جرافيك", sector: "private", company: "استوديو تصميم", city: "عن بعد", type: "عمل حر", category: "التصميم", salary: "حسب المشروع" },
+    { title: "مهندس مدني", sector: "public", company: "المديرية الجهوية للتجهيز", city: "أكادير", type: "دوام كامل", category: "الهندسة", salary: "حسب الاتفاق" },
+    { title: "موظف مبيعات", sector: "private", company: "متجر إلكتروني", city: "الدار البيضاء", type: "دوام كامل", category: "المبيعات", salary: "حسب الاتفاق" }
   ];
+
+  const sectors = [["all", "الكل"], ["public", "القطاع العام"], ["private", "القطاع الخاص"]];
+  let activeSector = new URLSearchParams(location.search).get("sector") || "all";
 
   const categories = ["الكل", "تقنية المعلومات", "المحاسبة والمالية", "التعليم", "التسويق", "الصحة", "الهندسة", "المبيعات", "التصميم"];
   let activeCategory = "الكل";
 
   const $ = (id) => document.getElementById(id);
+
+  function renderSectors() {
+    $("sectorChips").innerHTML = sectors.map(([k, label]) =>
+      `<button class="chip ${k === activeSector ? "active" : ""}" data-sector="${k}">${label}</button>`
+    ).join("");
+  }
+
+  $("sectorChips").addEventListener("click", (e) => {
+    const btn = e.target.closest(".chip");
+    if (!btn) return;
+    activeSector = btn.dataset.sector;
+    renderSectors();
+    renderJobs();
+  });
 
   function renderChips() {
     $("chips").innerHTML = categories.map(c =>
@@ -344,6 +362,7 @@ footer a:hover{color:#fff}
       <div class="tags">
         <span class="tag">📍 ${j.city}</span>
         <span class="tag">${j.type}</span>
+        <span class="tag">${j.sector === "public" ? "قطاع عام" : "قطاع خاص"}</span>
         <span class="tag">${j.category}</span>
       </div>
       <div class="meta">
@@ -357,6 +376,7 @@ footer a:hover{color:#fff}
     const q = $("q").value.trim().toLowerCase();
     const city = $("city").value;
     const list = jobs.filter(j =>
+      (activeSector === "all" || j.sector === activeSector) &&
       (activeCategory === "الكل" || j.category === activeCategory) &&
       (!city || j.city === city) &&
       (!q || (j.title + " " + j.company + " " + j.category).toLowerCase().includes(q))
@@ -411,6 +431,7 @@ footer a:hover{color:#fff}
   });
 
   $("jobCount").textContent = jobs.length;
+  renderSectors();
   renderChips();
   renderJobs();
   updateCV();
