@@ -145,10 +145,23 @@ footer a:hover{color:#fff}
 header{background:linear-gradient(90deg,color-mix(in srgb,var(--hero-top) 35%,var(--card)) 0%,color-mix(in srgb,var(--bg) 35%,var(--card)) 100%)}
 header .container{position:relative;z-index:1}
 
-/* Hero background: dense rings laid on a tilted floor, like the reference */
-.hero::before{content:"";position:absolute;left:-20%;right:-20%;top:20%;bottom:-40%;background:repeating-radial-gradient(circle at 75% 100%,transparent 0 15px,rgba(91,75,219,.16) 15px 16px);transform:perspective(700px) rotateX(55deg);transform-origin:50% 0%;animation:floor 16s ease-in-out infinite alternate;pointer-events:none}
-@keyframes floor{0%{transform:perspective(700px) rotateX(55deg) translateY(0)}100%{transform:perspective(700px) rotateX(55deg) translateY(-12px)}}
-@media (prefers-reduced-motion: reduce){.hero::before{animation:none}}
+/* ===== Animated vortex circles (hero) ===== */
+.hero::before{content:none;animation:none}
+.hero{isolation:isolate;
+  background:
+   radial-gradient(38% 30% at 50% 58%,color-mix(in srgb,var(--primary) 22%,transparent) 0%,transparent 70%),
+   radial-gradient(50% 44% at 12% 8%,color-mix(in srgb,var(--primary) 18%,transparent) 0%,transparent 70%),
+   linear-gradient(180deg,var(--hero-top) 0%,var(--bg) 75%)}
+.hero-vortex{position:absolute;left:50%;top:58%;width:150%;aspect-ratio:1;z-index:0;pointer-events:none;
+  transform:translate(-50%,-50%) perspective(760px) rotateX(62deg);transform-origin:50% 50%;opacity:.55;
+  -webkit-mask-image:radial-gradient(closest-side,#000 50%,transparent 100%);
+          mask-image:radial-gradient(closest-side,#000 50%,transparent 100%)}
+.hero-vortex::before{content:"";position:absolute;inset:-20%;
+  background:repeating-radial-gradient(circle at 50% 50%,transparent 0,transparent 15px,
+   color-mix(in srgb,var(--primary) 34%,transparent) 15.5px,color-mix(in srgb,var(--primary) 34%,transparent) 16.5px,
+   transparent 17px,transparent 18px)}
+@media (prefers-reduced-motion:no-preference){.hero-vortex::before{animation:vortexBreathe 9s ease-in-out infinite}}
+@keyframes vortexBreathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.045);opacity:1}}
 
 </style>
 </head>
@@ -197,6 +210,7 @@ header .container{position:relative;z-index:1}
 </header>
 
 <div class="hero">
+  <div class="hero-vortex"></div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
