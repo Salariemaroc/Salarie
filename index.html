@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salarié</title>
 <meta name="description" content="Salarié: منصة للبحث عن الوظائف مع أداة لإنشاء السيرة الذاتية والتقديم بسهولة.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cairo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{--primary:#5b4bdb;--primary-dark:#4a3ccc;--ink:#111827;--text2:#374151;--muted:#6b7280;--line:#e5e7eb;--bg:#f7f6ff;--hero-top:#f1eeff;--card:#ffffff;--alt:#ffffff;--pill:#ffffff;--soft:#ede9fe;--glow:#ddd6fe}
 :root[data-theme="dark"]{--primary:#7c6cf0;--primary-dark:#6d5ce6;--ink:#f9fafb;--text2:#e5e7eb;--muted:#9ca3af;--line:#1f2937;--bg:#0b1020;--hero-top:#17133a;--card:#111827;--alt:#0f172a;--pill:#111827;--soft:#312e81;--glow:#312e81}
@@ -15,18 +17,41 @@ a{color:inherit;text-decoration:none}
 button,select{font-family:inherit}
 .container{max-width:1400px;margin:auto;padding:0 32px}
 
-/* Header */
-header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:6px 0}
+/* Header (applied from the brand design system) */
+header{
+  --h-bg:250 43% 98.5%; --h-fg:232 42% 12%; --h-brand:243 75% 59%; --h-violet:262 83% 58%; --h-teal:175 74% 32%;
+  --h-ink:244 55% 22%; --h-soft:245 62% 96%; --h-surface:0 0% 100%; --h-hair:240 30% 91%; --h-muted:236 12% 45%;
+  font-family:"Plus Jakarta Sans","Cairo",Tahoma,Arial,sans-serif;
+  background:hsl(var(--h-surface) / .8);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border-bottom:1px solid hsl(var(--h-hair));
+  position:sticky;top:0;z-index:50;
+}
+:root[data-theme="dark"] header{
+  --h-bg:236 32% 8%; --h-fg:240 30% 96%; --h-brand:243 80% 66%; --h-violet:262 85% 68%; --h-teal:175 65% 45%;
+  --h-ink:240 40% 96%; --h-soft:243 30% 20%; --h-surface:236 28% 12%; --h-hair:240 18% 24%; --h-muted:240 14% 66%;
+}
+html[lang=ar] header{font-family:"Cairo",Tahoma,Arial,sans-serif}
+header .container{max-width:80rem;padding:0 1rem}
+@media(min-width:640px){header .container{padding:0 1.75rem}}
+@media(min-width:1024px){header .container{padding:0 2.5rem}}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;height:auto;min-height:4rem;padding:6px 0}
 .nav-main{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold;color:var(--ink)}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:800;color:hsl(var(--h-ink))}
+.logo span{background-image:linear-gradient(100deg,hsl(var(--h-brand)),hsl(var(--h-violet)) 55%,hsl(var(--h-teal)));-webkit-background-clip:text;background-clip:text;color:transparent}
 .logo-mark{width:40px;height:40px;flex-shrink:0}
-.pill-links{display:flex;align-items:center;gap:24px;background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:11px 28px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
-.pill-links a{color:var(--text2);font-size:15px;white-space:nowrap}
-.pill-links a:hover{color:var(--primary)}
+.pill-links{display:flex;align-items:center;gap:6px;background:hsl(var(--h-surface));border:1px solid hsl(var(--h-hair));border-radius:9999px;padding:6px;box-shadow:0 1px 2px hsl(var(--h-ink) / .04),0 12px 32px -20px hsl(var(--h-ink) / .18)}
+.pill-links a{color:hsl(var(--h-muted));font-size:15px;font-weight:600;white-space:nowrap;padding:8px 18px;border-radius:9999px;transition:background-color .2s ease,color .2s ease}
+.pill-links a:hover{color:hsl(var(--h-brand));background:hsl(var(--h-soft))}
+.pill-links a.active{color:hsl(var(--h-brand));background:hsl(var(--h-soft))}
 .nav-right{display:flex;align-items:center;gap:12px}
-.lang{background:var(--card);color:var(--text2);border:1px solid var(--line);border-radius:14px;padding:11px 18px;font-size:15px;cursor:pointer}
-.theme-btn{width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:18px;display:inline-flex;align-items:center;justify-content:center}
+.lang{background:hsl(var(--h-surface));color:hsl(var(--h-ink));border:1px solid hsl(var(--h-hair));border-radius:9999px;padding:10px 18px;font-size:15px;font-weight:700;cursor:pointer;transition:transform .2s cubic-bezier(.22,1,.36,1),border-color .2s ease,color .2s ease}
+.lang:hover{transform:translateY(-1px);border-color:hsl(var(--h-brand) / .45);color:hsl(var(--h-brand))}
+.theme-btn{width:44px;height:44px;border-radius:9999px;border:1px solid hsl(var(--h-hair));background:hsl(var(--h-surface));color:hsl(var(--h-ink));cursor:pointer;font-size:18px;display:inline-flex;align-items:center;justify-content:center;transition:transform .2s cubic-bezier(.22,1,.36,1),border-color .2s ease}
+.theme-btn:hover{transform:translateY(-1px);border-color:hsl(var(--h-brand) / .45)}
+.theme-btn:active{transform:translateY(0) scale(.985)}
+.lang:focus-visible,.theme-btn:focus-visible{outline:2px solid hsl(var(--h-brand));outline-offset:3px}
+@media(max-width:900px){.pill-links{overflow-x:auto;max-width:100%}}
 
 /* Jobs dropdown */
 .dropdown{position:relative}
