@@ -170,6 +170,13 @@ header .container{position:relative;z-index:1}
 .pill-links>a:hover,.pill-links>.dropdown:hover>a,.pill-links>a:focus-visible,.pill-links>.dropdown>a:focus-visible,
 .pill-links>a.active,.pill-links>.dropdown>a.active{border-color:color-mix(in srgb,var(--primary) 45%,transparent);color:var(--primary);background:color-mix(in srgb,var(--primary) 6%,transparent)}
 .pill-links>a.active,.pill-links>.dropdown>a.active{font-weight:600}
+
+/* Hero image frame: 4:3 image, rounded corners, glass card and soft glow */
+.visual-wrap{position:relative;isolation:isolate;width:fit-content;max-width:100%;justify-self:center}
+.visual-glow{position:absolute;left:6%;right:6%;top:12%;bottom:-2%;background:color-mix(in srgb,var(--primary) 30%,transparent);filter:blur(48px);border-radius:40px;z-index:-1;pointer-events:none}
+.visual{position:relative;z-index:1;width:auto;height:auto;aspect-ratio:auto;padding:12px;border-radius:2rem;overflow:visible;background:color-mix(in srgb,var(--card) 72%,transparent);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid color-mix(in srgb,#ffffff 70%,transparent);box-shadow:0 2px 4px color-mix(in srgb,var(--ink) 5%,transparent),0 28px 54px -26px color-mix(in srgb,var(--primary) 38%,transparent)}
+.art-img{display:block;width:488px;max-width:100%;height:auto;aspect-ratio:4/3;object-fit:contain;border-radius:1.5rem}
+@media(max-width:1000px){.visual-wrap{width:100%}.art-img{width:100%}}
 </style>
 </head>
 <body>
@@ -230,9 +237,9 @@ header .container{position:relative;z-index:1}
           <a class="btn btn-ghost" href="#steps" data-i18n="hero.btn2">شاهد كيف يعمل</a>
         </div>
       </div>
-      <div class="visual">
+      <div class="visual-wrap"><div class="visual-glow" aria-hidden="true"></div><div class="visual">
         <img class="art-img" src="hero-teachers.jpg" alt="مجموعة من المعلمين والمعلمات يسيرون معاً" data-i18n-alt="hero.alt">
-      </div>
+      </div></div>
     </div>
 
     <div class="stats">
