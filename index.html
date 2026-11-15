@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Salarié</title>
-<meta name="description" content="Salarié: حلول ذكية وبسيطة لكل ما تحتاجه">
+<meta name="description" content="Salarié: منصة للبحث عن الوظائف مع أداة لإنشاء السيرة الذاتية والتقديم بسهولة.">
 <style>
 :root{--primary:#5b4bdb;--primary-dark:#4a3ccc;--ink:#111827;--text2:#374151;--muted:#6b7280;--line:#e5e7eb;--bg:#f7f6ff;--hero-top:#f1eeff;--card:#ffffff;--alt:#ffffff;--pill:#ffffff;--soft:#ede9fe;--glow:#ddd6fe}
 :root[data-theme="dark"]{--primary:#7c6cf0;--primary-dark:#6d5ce6;--ink:#f9fafb;--text2:#e5e7eb;--muted:#9ca3af;--line:#1f2937;--bg:#0b1020;--hero-top:#17133a;--card:#111827;--alt:#0f172a;--pill:#111827;--soft:#312e81;--glow:#312e81}
@@ -145,16 +145,31 @@ footer a:hover{color:#fff}
 header{background:linear-gradient(90deg,color-mix(in srgb,var(--hero-top) 35%,var(--card)) 0%,color-mix(in srgb,var(--bg) 35%,var(--card)) 100%)}
 header .container{position:relative;z-index:1}
 
-/* Hero background: dense rings laid on a tilted floor, like the reference */
-.hero::before{content:"";position:absolute;left:-20%;right:-20%;top:20%;bottom:-40%;background:repeating-radial-gradient(circle at 75% 100%,transparent 0 15px,rgba(91,75,219,.16) 15px 16px);transform:perspective(700px) rotateX(55deg);transform-origin:50% 0%;animation:floor 16s ease-in-out infinite alternate;pointer-events:none}
-@keyframes floor{0%{transform:perspective(700px) rotateX(55deg) translateY(0)}100%{transform:perspective(700px) rotateX(55deg) translateY(-12px)}}
-@media (prefers-reduced-motion: reduce){.hero::before{animation:none}}
+/* ===== Animated vortex circles (hero) ===== */
+.hero::before{content:none;animation:none}
+.hero{isolation:isolate;
+  background:
+   radial-gradient(38% 30% at 50% 58%,color-mix(in srgb,var(--primary) 22%,transparent) 0%,transparent 70%),
+   radial-gradient(50% 44% at 12% 8%,color-mix(in srgb,var(--primary) 18%,transparent) 0%,transparent 70%),
+   linear-gradient(180deg,var(--hero-top) 0%,var(--bg) 75%)}
+.hero-vortex{position:absolute;left:50%;top:58%;width:150%;aspect-ratio:1;z-index:0;pointer-events:none;
+  transform:translate(-50%,-50%) perspective(760px) rotateX(62deg);transform-origin:50% 50%;opacity:.55;
+  -webkit-mask-image:radial-gradient(closest-side,#000 50%,transparent 100%);
+          mask-image:radial-gradient(closest-side,#000 50%,transparent 100%)}
+.hero-vortex::before{content:"";position:absolute;inset:-20%;
+  background:repeating-radial-gradient(circle at 50% 50%,transparent 0,transparent 15px,
+   color-mix(in srgb,var(--primary) 34%,transparent) 15.5px,color-mix(in srgb,var(--primary) 34%,transparent) 16.5px,
+   transparent 17px,transparent 18px)}
+@media (prefers-reduced-motion:no-preference){.hero-vortex::before{animation:vortexBreathe 9s ease-in-out infinite}}
+@keyframes vortexBreathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.045);opacity:1}}
 
 
-/* Hero image: 488 x 366 px, 4:3 */
-.visual{width:488px;max-width:100%;height:auto;aspect-ratio:4/3;padding:0;justify-self:center}
-.art-img{width:100%;height:100%;object-fit:contain}
-@media(max-width:1000px){.visual{width:100%;max-width:488px;height:auto;aspect-ratio:4/3}}
+/* ===== Nav pill: outlined active link like the reference ===== */
+.pill-links{gap:6px;padding:7px 12px;background:color-mix(in srgb,var(--pill) 78%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.pill-links>a,.pill-links>.dropdown>a{display:inline-block;padding:9px 20px;border:1.5px solid transparent;border-radius:999px;color:var(--text2);font-size:15px;line-height:1.4;transition:border-color .2s,color .2s,background .2s}
+.pill-links>a:hover,.pill-links>.dropdown:hover>a,.pill-links>a:focus-visible,.pill-links>.dropdown>a:focus-visible,
+.pill-links>a.active,.pill-links>.dropdown>a.active{border-color:color-mix(in srgb,var(--primary) 45%,transparent);color:var(--primary);background:color-mix(in srgb,var(--primary) 6%,transparent)}
+.pill-links>a.active,.pill-links>.dropdown>a.active{font-weight:600}
 </style>
 </head>
 <body>
@@ -178,7 +193,7 @@ header .container{position:relative;z-index:1}
       </a>
       <nav class="pill-links">
         <div class="dropdown">
-          <a href="#jobs" data-i18n="nav.jobs">الوظائف</a>
+          <a class="active" href="#jobs" data-i18n="nav.jobs">الوظائف</a>
           <div class="dropdown-menu">
             <a href="jobs.html?sector=public" data-i18n="sector.public">القطاع العام</a>
             <a href="jobs.html?sector=private" data-i18n="sector.private">القطاع الخاص</a>
@@ -202,13 +217,14 @@ header .container{position:relative;z-index:1}
 </header>
 
 <div class="hero">
+  <div class="hero-vortex"></div>
   <div class="container">
     <div class="hero-grid">
       <div class="hero-text">
         <span class="badge-pill" data-i18n="hero.pill">✦ مرحباً بكم في Salarié</span>
         <h1><span id="h1a" data-i18n="hero.h1">حلول ذكية وبسيطة</span><br><span class="accent" id="rotate">لكل ما تحتاجه</span></h1>
         <div class="accent-line"><i>✦</i><span data-i18n="hero.accent">وظائف وسيرة ذاتية وأكثر</span></div>
-        <p data-i18n="hero.lead">اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يختارك الزائر.</p>
+        <p data-i18n="hero.lead">اعثر على وظيفتك، وأنشئ سيرتك الذاتية باحترافية، وتقدّم بخطوات بسيطة وسريعة، كل ذلك في مكان واحد.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#jobs" data-i18n="hero.btn1">ابدأ مجاناً ←</a>
           <a class="btn btn-ghost" href="#steps" data-i18n="hero.btn2">شاهد كيف يعمل</a>
@@ -351,7 +367,7 @@ header .container{position:relative;z-index:1}
       "hero.pill": "✦ مرحباً بكم في Salarié", "hero.h1": "حلول ذكية وبسيطة",
       "hero.words": ["لكل ما تحتاجه", "بكل سهولة", "في أي وقت"],
       "hero.accent": "وظائف وسيرة ذاتية وأكثر",
-      "hero.lead": "اكتب هنا وصفاً قصيراً لموقعك: ماذا تقدم، ولماذا يختارك الزائر.",
+      "hero.lead": "اعثر على وظيفتك، وأنشئ سيرتك الذاتية باحترافية، وتقدّم بخطوات بسيطة وسريعة، كل ذلك في مكان واحد.",
       "hero.btn1": "ابدأ مجاناً ←", "hero.btn2": "شاهد كيف يعمل", "hero.alt": "مجموعة من المعلمين والمعلمات يسيرون معاً",
       "stat.rating": "تقييم الزبائن", "stat.services": "خدمة متوفرة", "stat.languages": "لغات", "stat.support": "دعم متواصل",
       "jobs.title": "أحدث الوظائف", "jobs.lead": "فرص عمل مختارة في مختلف القطاعات بالمغرب", "jobs.more": "شاهد كل الوظائف",
@@ -385,7 +401,7 @@ header .container{position:relative;z-index:1}
       "hero.pill": "✦ Bienvenue sur Salarié", "hero.h1": "Des solutions simples et intelligentes",
       "hero.words": ["pour tout ce dont vous avez besoin", "en toute simplicité", "à tout moment"],
       "hero.accent": "Emplois, CV et plus",
-      "hero.lead": "Décrivez ici votre site : ce que vous proposez et pourquoi les visiteurs doivent vous choisir.",
+      "hero.lead": "Trouvez un emploi, créez votre CV et postulez en quelques étapes simples.",
       "hero.btn1": "Commencer gratuitement →", "hero.btn2": "Voir comment ça marche", "hero.alt": "Un groupe d’enseignants qui marchent ensemble",
       "stat.rating": "Note des clients", "stat.services": "Services disponibles", "stat.languages": "Langues", "stat.support": "Support continu",
       "jobs.title": "Dernières offres", "jobs.lead": "Des offres d’emploi sélectionnées dans tous les secteurs au Maroc", "jobs.more": "Voir toutes les offres",
@@ -419,7 +435,7 @@ header .container{position:relative;z-index:1}
       "hero.pill": "✦ Welcome to Salarié", "hero.h1": "Smart and simple solutions",
       "hero.words": ["for everything you need", "made simple", "anytime"],
       "hero.accent": "Jobs, resume and more",
-      "hero.lead": "Describe your site here: what you offer and why visitors should choose you.",
+      "hero.lead": "Find jobs, build your resume, and apply in a few simple steps.",
       "hero.btn1": "Start for free →", "hero.btn2": "See how it works", "hero.alt": "A group of teachers walking together",
       "stat.rating": "Customer rating", "stat.services": "Services available", "stat.languages": "Languages", "stat.support": "Ongoing support",
       "jobs.title": "Latest jobs", "jobs.lead": "Selected job opportunities across sectors in Morocco", "jobs.more": "See all jobs",
