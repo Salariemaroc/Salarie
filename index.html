@@ -15,55 +15,94 @@ a{color:inherit;text-decoration:none}
 button,select{font-family:inherit}
 .container{max-width:1400px;margin:auto;padding:0 32px}
 
-/* Header / modern navigation */
+/* Header — matched to the supplied Naditaalim reference */
 header{
-  background:color-mix(in srgb,var(--card) 82%,transparent);
-  border-bottom:1px solid color-mix(in srgb,var(--line) 75%,transparent);
   position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.78);
+  border-bottom:1px solid rgba(226,232,240,.62);
   -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
 }
-.nav{
-  min-height:68px;display:flex;align-items:center;justify-content:space-between;
-  gap:12px;flex-wrap:nowrap;padding:8px 0;position:relative;
+:root[data-theme="dark"] header{
+  background:rgba(17,24,39,.82);
+  border-bottom-color:rgba(55,65,81,.72);
 }
-.nav-main{display:flex;align-items:center;gap:18px;min-width:0}
-.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;font-size:20px;font-weight:bold;color:var(--ink)}
-.logo-mark{width:36px;height:36px;flex-shrink:0}
+.nav{
+  height:68px;min-height:68px;padding:0;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;flex-wrap:nowrap;position:relative;
+}
+.nav-main{display:flex;align-items:center;gap:10px;flex:0 0 auto;min-width:0}
+.logo{
+  display:flex;align-items:center;gap:10px;flex-shrink:0;
+  color:#0f172a;font-size:16px;font-weight:700;line-height:1;
+  letter-spacing:-.35px;white-space:nowrap
+}
+:root[data-theme="dark"] .logo{color:#f9fafb}
+.logo-mark{width:32px;height:32px;flex-shrink:0}
 .pill-links{
-  display:flex;align-items:center;gap:4px;border-radius:999px;
-  background:color-mix(in srgb,var(--pill) 78%,transparent);
-  border:1px solid color-mix(in srgb,var(--line) 70%,transparent);
-  padding:5px 7px;box-shadow:none;
+  display:flex;align-items:center;gap:4px;
+  border-radius:999px;background:rgba(255,255,255,.60);
+  border:1px solid rgba(226,232,240,.60);
+  padding:6px;box-shadow:none;
   -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
 }
-.pill-links a{display:inline-block;padding:8px 13px;border:1px solid transparent;border-radius:999px;color:var(--text2);font-size:13px;font-weight:600;white-space:nowrap;transition:.2s}
+:root[data-theme="dark"] .pill-links{
+  background:rgba(31,41,55,.66);border-color:rgba(75,85,99,.65)
+}
+.pill-links a{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:6px 14px;border:0;border-radius:999px;
+  color:#475569;font-size:13px;font-weight:600;line-height:1.5;
+  white-space:nowrap;transition:color .18s ease,background .18s ease;
+}
+:root[data-theme="dark"] .pill-links a{color:#cbd5e1}
 .pill-links a:hover,.pill-links a:focus-visible,.pill-links a.active{
-  border-color:color-mix(in srgb,var(--primary) 42%,transparent);
-  color:var(--primary);background:color-mix(in srgb,var(--primary) 7%,transparent)
+  color:var(--primary);background:rgba(91,75,219,.075);outline:none
 }
-.nav-right{display:flex;align-items:center;gap:8px;flex-shrink:0}
+.pill-links a.active{font-weight:700}
+.nav-right{display:flex;align-items:center;gap:8px;flex:0 0 auto}
 .lang{
-  height:36px;background:color-mix(in srgb,var(--card) 80%,transparent);
-  color:var(--text2);border:1px solid var(--line);border-radius:999px;
-  padding:0 12px;font-size:13px;cursor:pointer
+  appearance:none;-webkit-appearance:none;
+  height:36px;min-width:82px;padding:0 28px 0 12px;
+  border:1px solid rgba(226,232,240,.70);border-radius:999px;
+  background-color:rgba(255,255,255,.70);color:#334155;
+  font-size:13px;font-weight:600;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:left 11px center;
 }
-.theme-btn{
-  width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
-  background:color-mix(in srgb,var(--card) 80%,transparent);cursor:pointer;
-  font-size:16px;display:inline-flex;align-items:center;justify-content:center
+:root[data-theme="dark"] .lang{
+  background-color:rgba(31,41,55,.8);color:#e5e7eb;border-color:rgba(75,85,99,.75)
 }
+.nav-login{
+  height:36px;padding:0 16px;border:0;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;
+  background:transparent;color:#475569;font-size:13px;font-weight:600;
+  white-space:nowrap;cursor:pointer;transition:background .2s,color .2s
+}
+.nav-login:hover{background:#f1f5f9;color:var(--primary)}
+:root[data-theme="dark"] .nav-login{color:#cbd5e1}
+:root[data-theme="dark"] .nav-login:hover{background:#1f2937;color:#a99dfb}
+.nav-signup{
+  height:36px;padding:0 19px;border:0;border-radius:999px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--primary);color:#fff;font-size:13px;font-weight:700;
+  white-space:nowrap;box-shadow:0 7px 18px rgba(91,75,219,.22);
+  transition:filter .2s,transform .2s
+}
+.nav-signup:hover{filter:brightness(1.06);transform:translateY(-1px)}
+.nav-signup svg{width:14px;height:14px;flex-shrink:0}
 .mobile-menu-btn{
-  display:none;width:36px;height:36px;border-radius:50%;border:1px solid var(--line);
-  background:color-mix(in srgb,var(--card) 80%,transparent);color:var(--text2);
-  cursor:pointer;font-size:20px;align-items:center;justify-content:center
+  display:none;width:36px;height:36px;border-radius:999px;
+  border:1px solid rgba(226,232,240,.8);background:rgba(255,255,255,.7);
+  color:#334155;cursor:pointer;align-items:center;justify-content:center;font-size:19px
 }
 .mobile-nav{
-  display:none;position:absolute;top:calc(100% + 8px);right:18px;left:18px;
-  padding:10px;background:var(--card);border:1px solid var(--line);
-  border-radius:18px;box-shadow:0 16px 36px rgba(0,0,0,.13);z-index:60
+  display:none;position:absolute;top:calc(100% + 8px);right:0;left:0;
+  padding:8px;background:var(--card);border:1px solid var(--line);
+  border-radius:18px;box-shadow:0 14px 30px rgba(0,0,0,.12);z-index:60
 }
-.mobile-nav.open{display:flex;flex-direction:column;gap:4px}
-.mobile-nav a{padding:11px 14px;border-radius:12px;color:var(--text2);font-size:14px;font-weight:600}
+.mobile-nav.open{display:flex;flex-direction:column;gap:3px}
+.mobile-nav a{padding:10px 14px;border-radius:12px;color:var(--text2);font-size:13px;font-weight:600}
 .mobile-nav a:hover,.mobile-nav a.active{background:var(--soft);color:var(--primary)}
 /* Jobs dropdown */
 .dropdown{position:relative}
@@ -161,6 +200,11 @@ footer a{display:block;color:#cbd5e1;margin-bottom:8px;font-size:15px}
 footer a:hover{color:#fff}
 .copy{text-align:center;border-top:1px solid #1f2937;padding-top:20px;font-size:14px;color:#94a3b8}
 
+@media(max-width:1100px){
+  .nav-main{gap:8px}
+  .pill-links a{padding-left:9px;padding-right:9px}
+  .nav-login{padding-left:10px;padding-right:10px}
+}
 @media(max-width:1000px){
   .hero-grid{grid-template-columns:1fr}
   .hero-text{text-align:center}
@@ -171,17 +215,19 @@ footer a:hover{color:#fff}
   .visual{aspect-ratio:auto;height:440px}
   .stats{grid-template-columns:repeat(2,1fr)}
   .pill-links{display:none}
+  .nav-login{display:none}
   .mobile-menu-btn{display:inline-flex}
 }
 @media(max-width:600px){
   .container{padding:0 18px}
   .hero h1{font-size:34px}
   .title{font-size:26px}
-  .nav{min-height:64px}
-  .logo{font-size:18px}
-  .logo-mark{width:32px;height:32px}
+  .nav{height:64px;min-height:64px;gap:6px}
+  .logo{font-size:16px}
+  .logo-mark{width:30px;height:30px}
   .nav-right{gap:6px}
-  .lang{max-width:105px;padding:0 8px}
+  .nav-signup{padding:0 12px;font-size:12px}
+  .lang{min-width:76px;padding-right:23px}
 }
 
 /* Top bar takes a soft tint */
@@ -207,6 +253,12 @@ header .container{position:relative;z-index:1}
 @keyframes vortexBreathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.045);opacity:1}}
 
 
+/* ===== Nav pill: outlined active link like the reference ===== */
+.pill-links{gap:6px;padding:7px 12px;background:color-mix(in srgb,var(--pill) 78%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.pill-links>a,.pill-links>.dropdown>a{display:inline-block;padding:9px 20px;border:1.5px solid transparent;border-radius:999px;color:var(--text2);font-size:15px;line-height:1.4;transition:border-color .2s,color .2s,background .2s}
+.pill-links>a:hover,.pill-links>.dropdown:hover>a,.pill-links>a:focus-visible,.pill-links>.dropdown>a:focus-visible,
+.pill-links>a.active,.pill-links>.dropdown>a.active{border-color:color-mix(in srgb,var(--primary) 45%,transparent);color:var(--primary);background:color-mix(in srgb,var(--primary) 6%,transparent)}
+.pill-links>a.active,.pill-links>.dropdown>a.active{font-weight:600}
 </style>
 </head>
 <body>
@@ -230,16 +282,18 @@ header .container{position:relative;z-index:1}
       </a>
       <nav class="pill-links" aria-label="التنقل الرئيسي">
         <div class="dropdown">
-          <a class="active" href="#jobs" data-i18n="nav.jobs">الوظائف</a>
+          <a class="active" href="#jobs" data-i18n="nav.tools">أدوات</a>
           <div class="dropdown-menu">
             <a href="jobs.html?sector=public" data-i18n="sector.public">القطاع العام</a>
             <a href="jobs.html?sector=private" data-i18n="sector.private">القطاع الخاص</a>
           </div>
         </div>
-        <a href="#steps" data-i18n="nav.steps">الخطوات</a>
-        <a href="jobs.html#cv" data-i18n="nav.cv">السيرة الذاتية</a>
+        <a href="#steps" data-i18n="nav.features">الميزات</a>
+        <a href="#testimonials" data-i18n="nav.exclusive">حصري</a>
+        <a href="#jobs" data-i18n="nav.showcase">نماذج</a>
+        <a href="#testimonials" data-i18n="nav.opinions">آراء</a>
         <a href="#pricing" data-i18n="nav.pricing">الأسعار</a>
-        <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
+        <a href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a>
       </nav>
     </div>
     <div class="nav-right">
@@ -249,16 +303,23 @@ header .container{position:relative;z-index:1}
         <option value="en">English</option>
       </select>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Dark mode">🌙</button>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="فتح القائمة" aria-expanded="false">☰</button>
+      <a class="nav-login" href="jobs.html">تسجيل الدخول</a>
+      <a class="nav-signup" href="jobs.html#cv">
+        <span>إنشاء حساب</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+      </a>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
     <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف">
-      <a class="active" href="#jobs" data-i18n="nav.jobs">الوظائف</a>
+      <a class="active" href="#jobs" data-i18n="nav.tools">أدوات</a>
       <a href="jobs.html?sector=public" data-i18n="sector.public">القطاع العام</a>
       <a href="jobs.html?sector=private" data-i18n="sector.private">القطاع الخاص</a>
-      <a href="#steps" data-i18n="nav.steps">الخطوات</a>
-      <a href="jobs.html#cv" data-i18n="nav.cv">السيرة الذاتية</a>
+      <a href="#steps" data-i18n="nav.features">الميزات</a>
+      <a href="#testimonials" data-i18n="nav.exclusive">حصري</a>
+      <a href="#jobs" data-i18n="nav.showcase">نماذج</a>
+      <a href="#testimonials" data-i18n="nav.opinions">آراء</a>
       <a href="#pricing" data-i18n="nav.pricing">الأسعار</a>
-      <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
+      <a href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a>
     </nav>
   </div>
 </header>
@@ -409,6 +470,7 @@ header .container{position:relative;z-index:1}
 <script>
   const T = {
     ar: {
+      "nav.tools": "أدوات", "nav.features": "الميزات", "nav.exclusive": "حصري", "nav.showcase": "نماذج", "nav.opinions": "آراء",
       "nav.jobs": "الوظائف", "sector.public": "القطاع العام", "sector.private": "القطاع الخاص",
       "nav.steps": "الخطوات", "nav.cv": "السيرة الذاتية", "nav.pricing": "الأسعار", "nav.faq": "الأسئلة",
       "hero.pill": "✦ مرحباً بكم في Salarié", "hero.h1": "حلول ذكية وبسيطة",
@@ -443,6 +505,7 @@ header .container{position:relative;z-index:1}
       "footer.privacy": "سياسة الخصوصية", "footer.terms": "شروط الاستعمال", "footer.copy": "© 2026 Salarié. جميع الحقوق محفوظة."
     },
     fr: {
+      "nav.tools": "Outils", "nav.features": "Fonctionnalités", "nav.exclusive": "Exclusif", "nav.showcase": "Exemples", "nav.opinions": "Avis",
       "nav.jobs": "Emplois", "sector.public": "Secteur public", "sector.private": "Secteur privé",
       "nav.steps": "Étapes", "nav.cv": "CV", "nav.pricing": "Tarifs", "nav.faq": "FAQ",
       "hero.pill": "✦ Bienvenue sur Salarié", "hero.h1": "Des solutions simples et intelligentes",
@@ -477,6 +540,7 @@ header .container{position:relative;z-index:1}
       "footer.privacy": "Politique de confidentialité", "footer.terms": "Conditions d’utilisation", "footer.copy": "© 2026 Salarié. Tous droits réservés."
     },
     en: {
+      "nav.tools": "Tools", "nav.features": "Features", "nav.exclusive": "Exclusive", "nav.showcase": "Showcase", "nav.opinions": "Reviews",
       "nav.jobs": "Jobs", "sector.public": "Public sector", "sector.private": "Private sector",
       "nav.steps": "Steps", "nav.cv": "Resume", "nav.pricing": "Pricing", "nav.faq": "FAQ",
       "hero.pill": "✦ Welcome to Salarié", "hero.h1": "Smart and simple solutions",
@@ -559,17 +623,15 @@ header .container{position:relative;z-index:1}
   const mobileMenuBtn = document.getElementById("mobileMenuBtn");
   const mobileNav = document.getElementById("mobileNav");
   mobileMenuBtn.addEventListener("click", () => {
-    const isOpen = mobileNav.classList.toggle("open");
-    mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
-    mobileMenuBtn.textContent = isOpen ? "×" : "☰";
+    const opened = mobileNav.classList.toggle("open");
+    mobileMenuBtn.setAttribute("aria-expanded", String(opened));
+    mobileMenuBtn.textContent = opened ? "×" : "☰";
   });
-  mobileNav.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      mobileNav.classList.remove("open");
-      mobileMenuBtn.setAttribute("aria-expanded", "false");
-      mobileMenuBtn.textContent = "☰";
-    });
-  });
+  mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+    mobileNav.classList.remove("open");
+    mobileMenuBtn.setAttribute("aria-expanded", "false");
+    mobileMenuBtn.textContent = "☰";
+  }));
   document.getElementById("themeBtn").addEventListener("click", () => {
     setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
