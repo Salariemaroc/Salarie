@@ -15,35 +15,19 @@ a{color:inherit;text-decoration:none}
 button,select{font-family:inherit}
 .container{max-width:1400px;margin:auto;padding:0 32px}
 
-/* Header — reference-matched navigation */
-header{height:68px;position:sticky;top:0;z-index:50;background:#f8f7f1;border-bottom:1px solid rgba(226,222,210,.62);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
-:root[data-theme="dark"] header{background:#171827;border-bottom-color:#303044}
-.nav{height:68px;min-height:68px;padding:0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap}
-.nav-main{display:flex;align-items:center;gap:18px;flex:0 1 auto;min-width:0;flex-wrap:nowrap}
-.logo{display:flex;align-items:center;gap:9px;flex:0 0 auto;font-family:Tahoma,Arial,sans-serif;font-size:16px;font-weight:700;line-height:1;color:#111827;white-space:nowrap}
-:root[data-theme="dark"] .logo{color:#f9fafb}
-.logo-mark{width:32px;height:32px;flex-shrink:0}
-.pill-links{display:flex;align-items:center;gap:3px;padding:0;border:0;border-radius:0;background:transparent;box-shadow:none;white-space:nowrap}
-.pill-links a,.pill-links>.dropdown>a{display:inline-flex;align-items:center;justify-content:center;padding:7px 12px;border:1px solid transparent;border-radius:999px;color:#4b5563;font-family:Tahoma,Arial,sans-serif;font-size:13px;font-weight:600;line-height:1.4;white-space:nowrap;transition:background .18s ease,border-color .18s ease,color .18s ease}
-:root[data-theme="dark"] .pill-links a,:root[data-theme="dark"] .pill-links>.dropdown>a{color:#d1d5db}
-.pill-links a:hover,.pill-links>.dropdown:hover>a,.pill-links a:focus-visible,.pill-links>.dropdown>a:focus-visible{color:#5b4bdb;background:rgba(91,75,219,.055);outline:none}
-.pill-links a.active,.pill-links>.dropdown>a.active{border-color:rgba(91,75,219,.42);color:#5b4bdb;background:rgba(91,75,219,.025);font-weight:700}
-:root[data-theme="dark"] .pill-links a.active,:root[data-theme="dark"] .pill-links>.dropdown>a.active{color:#a99dfb;border-color:rgba(169,157,251,.55)}
-.nav-right{display:flex;align-items:center;gap:8px;flex:0 0 auto;white-space:nowrap}
-.lang{appearance:none;-webkit-appearance:none;height:36px;min-width:82px;padding:0 27px 0 12px;border:1px solid rgba(226,232,240,.65);border-radius:999px;background-color:rgba(255,255,255,.42);color:#4b5563;font-size:13px;font-weight:600;cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:left 10px center}
-:root[data-theme="dark"] .lang{background-color:#202033;color:#e5e7eb;border-color:#39394d}
-.nav-login{height:36px;padding:0 12px;display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;background:transparent;color:#4b5563;font-size:13px;font-weight:600;white-space:nowrap;cursor:pointer}
-.nav-login:hover{color:#5b4bdb;background:rgba(91,75,219,.05)}
-:root[data-theme="dark"] .nav-login{color:#d1d5db}
-.nav-signup{height:36px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:999px;background:#5142cf;color:#fff;font-size:13px;font-weight:700;white-space:nowrap;box-shadow:0 5px 13px rgba(81,66,207,.16);transition:filter .18s,transform .18s}
-.nav-signup:hover{filter:brightness(1.07);transform:translateY(-1px)}
-.nav-signup svg{width:14px;height:14px;flex-shrink:0}
-.theme-btn{display:none!important}
-.mobile-menu-btn{display:none;width:36px;height:36px;border-radius:999px;border:1px solid rgba(226,232,240,.8);background:rgba(255,255,255,.7);color:#334155;cursor:pointer;align-items:center;justify-content:center;font-size:19px}
-.mobile-nav{display:none;position:absolute;top:calc(100% + 7px);right:18px;left:18px;padding:9px;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:0 14px 30px rgba(0,0,0,.12);z-index:60}
-.mobile-nav.open{display:flex;flex-direction:column;gap:3px}
-.mobile-nav a{padding:10px 13px;border-radius:11px;color:var(--text2);font-size:13px;font-weight:600}
-.mobile-nav a:hover,.mobile-nav a.active{background:var(--soft);color:var(--primary)}
+/* Header */
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:6px 0}
+.nav-main{display:flex;align-items:center;gap:30px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:bold;color:var(--ink)}
+.logo-mark{width:40px;height:40px;flex-shrink:0}
+.pill-links{display:flex;align-items:center;gap:24px;background:var(--pill);border:1px solid var(--line);border-radius:999px;padding:11px 28px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+.pill-links a{color:var(--text2);font-size:15px;white-space:nowrap}
+.pill-links a:hover{color:var(--primary)}
+.nav-right{display:flex;align-items:center;gap:12px}
+.lang{background:var(--card);color:var(--text2);border:1px solid var(--line);border-radius:14px;padding:11px 18px;font-size:15px;cursor:pointer}
+.theme-btn{width:46px;height:46px;border-radius:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:18px;display:inline-flex;align-items:center;justify-content:center}
+
 /* Jobs dropdown */
 .dropdown{position:relative}
 .dropdown-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%);min-width:190px;margin-top:12px;padding:8px;background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,.12);display:none;flex-direction:column;gap:4px;z-index:30}
@@ -140,13 +124,26 @@ footer a{display:block;color:#cbd5e1;margin-bottom:8px;font-size:15px}
 footer a:hover{color:#fff}
 .copy{text-align:center;border-top:1px solid #1f2937;padding-top:20px;font-size:14px;color:#94a3b8}
 
-@media(max-width:1180px){.pill-links a,.pill-links>.dropdown>a{padding-left:8px;padding-right:8px}.nav-main{gap:10px}}
 @media(max-width:1000px){
-  .hero-grid{grid-template-columns:1fr}.hero-text{text-align:center}.hero-text p{margin-left:auto;margin-right:auto}.hero-actions{justify-content:center}.accent-line{justify-content:center}.badge-pill{margin-left:auto;margin-right:auto}.visual{aspect-ratio:auto;height:440px}.stats{grid-template-columns:repeat(2,1fr)}
-  .pill-links{display:none}.nav-login{display:none}.mobile-menu-btn{display:inline-flex}
+  .hero-grid{grid-template-columns:1fr}
+  .hero-text{text-align:center}
+  .hero-text p{margin-left:auto;margin-right:auto}
+  .hero-actions{justify-content:center}
+  .accent-line{justify-content:center}
+  .badge-pill{margin-left:auto;margin-right:auto}
+  .visual{aspect-ratio:auto;height:440px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pill-links{display:none}
 }
-@media(max-width:600px){.container{padding:0 18px}.hero h1{font-size:34px}.title{font-size:26px}.nav{height:64px;min-height:64px}.logo{font-size:16px}.logo-mark{width:30px;height:30px}.nav-right{gap:5px}.nav-signup{padding:0 12px;font-size:12px}.lang{min-width:76px;padding-right:23px}}
+@media(max-width:600px){
+  .container{padding:0 18px}
+  .hero h1{font-size:34px}
+  .title{font-size:26px}
+}
 
+/* Top bar takes a soft tint */
+header{background:linear-gradient(90deg,color-mix(in srgb,var(--hero-top) 35%,var(--card)) 0%,color-mix(in srgb,var(--bg) 35%,var(--card)) 100%)}
+header .container{position:relative;z-index:1}
 
 /* ===== Animated vortex circles (hero) ===== */
 .hero::before{content:none;animation:none}
@@ -167,6 +164,12 @@ footer a:hover{color:#fff}
 @keyframes vortexBreathe{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.045);opacity:1}}
 
 
+/* ===== Nav pill: outlined active link like the reference ===== */
+.pill-links{gap:6px;padding:7px 12px;background:color-mix(in srgb,var(--pill) 78%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.pill-links>a,.pill-links>.dropdown>a{display:inline-block;padding:9px 20px;border:1.5px solid transparent;border-radius:999px;color:var(--text2);font-size:15px;line-height:1.4;transition:border-color .2s,color .2s,background .2s}
+.pill-links>a:hover,.pill-links>.dropdown:hover>a,.pill-links>a:focus-visible,.pill-links>.dropdown>a:focus-visible,
+.pill-links>a.active,.pill-links>.dropdown>a.active{border-color:color-mix(in srgb,var(--primary) 45%,transparent);color:var(--primary);background:color-mix(in srgb,var(--primary) 6%,transparent)}
+.pill-links>a.active,.pill-links>.dropdown>a.active{font-weight:600}
 </style>
 </head>
 <body>
@@ -174,37 +177,42 @@ footer a:hover{color:#fff}
 <header>
   <div class="container nav">
     <div class="nav-main">
-      <a class="logo" href="#" aria-label="Salarié">
+      <a class="logo" href="#">
         <svg class="logo-mark" viewBox="0 0 120 120" aria-hidden="true">
-          <defs><linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5b4bdb"/><stop offset="1" stop-color="#8b7cf6"/></linearGradient></defs>
+          <defs>
+            <linearGradient id="lbg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#5b4bdb"/>
+              <stop offset="1" stop-color="#8b7cf6"/>
+            </linearGradient>
+          </defs>
           <rect width="120" height="120" rx="30" fill="url(#lbg)"/>
           <path d="M84 38 C76 28 44 28 42 46 C40 60 80 60 80 76 C80 92 46 94 36 82" fill="none" stroke="#ffffff" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="92" cy="26" r="7" fill="#fbbf24"/>
         </svg>
         <span>Salarié</span>
       </a>
-      <nav class="pill-links" aria-label="التنقل الرئيسي">
-        <a class="active" href="#jobs" data-i18n="nav.tools">أدوات</a>
-        <a href="#steps" data-i18n="nav.features">الميزات</a>
-        <a href="#testimonials" data-i18n="nav.exclusive">حصري</a>
-        <a href="#jobs" data-i18n="nav.showcase">نماذج</a>
-        <a href="#testimonials" data-i18n="nav.opinions">آراء</a>
+      <nav class="pill-links">
+        <div class="dropdown">
+          <a class="active" href="#jobs" data-i18n="nav.jobs">الوظائف</a>
+          <div class="dropdown-menu">
+            <a href="jobs.html?sector=public" data-i18n="sector.public">القطاع العام</a>
+            <a href="jobs.html?sector=private" data-i18n="sector.private">القطاع الخاص</a>
+          </div>
+        </div>
+        <a href="#steps" data-i18n="nav.steps">الخطوات</a>
+        <a href="jobs.html#cv" data-i18n="nav.cv">السيرة الذاتية</a>
         <a href="#pricing" data-i18n="nav.pricing">الأسعار</a>
-        <a href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a>
+        <a href="#faq" data-i18n="nav.faq">الأسئلة</a>
       </nav>
     </div>
     <div class="nav-right">
       <select class="lang" id="langSelect" aria-label="Language">
-        <option value="ar">العربية</option><option value="fr">Français</option><option value="en">English</option>
+        <option value="ar">العربية</option>
+        <option value="fr">Français</option>
+        <option value="en">English</option>
       </select>
       <button class="theme-btn" id="themeBtn" type="button" aria-label="Dark mode">🌙</button>
-      <a class="nav-login" href="jobs.html" data-i18n="nav.login">تسجيل الدخول</a>
-      <a class="nav-signup" href="jobs.html#cv"><span data-i18n="nav.signup">إنشاء حساب</span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg></a>
-      <button class="mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Menu" aria-expanded="false">☰</button>
     </div>
-    <nav class="mobile-nav" id="mobileNav" aria-label="قائمة الهاتف">
-      <a class="active" href="#jobs" data-i18n="nav.tools">أدوات</a><a href="#steps" data-i18n="nav.features">الميزات</a><a href="#testimonials" data-i18n="nav.exclusive">حصري</a><a href="#jobs" data-i18n="nav.showcase">نماذج</a><a href="#testimonials" data-i18n="nav.opinions">آراء</a><a href="#pricing" data-i18n="nav.pricing">الأسعار</a><a href="#faq" data-i18n="nav.faq">الأسئلة الشائعة</a>
-    </nav>
   </div>
 </header>
 
@@ -354,8 +362,6 @@ footer a:hover{color:#fff}
 <script>
   const T = {
     ar: {
-      "nav.tools":"أدوات", "nav.features":"الميزات", "nav.exclusive":"حصري", "nav.showcase":"نماذج", "nav.opinions":"آراء", "nav.login":"تسجيل الدخول", "nav.signup":"إنشاء حساب",
-
       "nav.jobs": "الوظائف", "sector.public": "القطاع العام", "sector.private": "القطاع الخاص",
       "nav.steps": "الخطوات", "nav.cv": "السيرة الذاتية", "nav.pricing": "الأسعار", "nav.faq": "الأسئلة",
       "hero.pill": "✦ مرحباً بكم في Salarié", "hero.h1": "حلول ذكية وبسيطة",
@@ -390,8 +396,6 @@ footer a:hover{color:#fff}
       "footer.privacy": "سياسة الخصوصية", "footer.terms": "شروط الاستعمال", "footer.copy": "© 2026 Salarié. جميع الحقوق محفوظة."
     },
     fr: {
-      "nav.tools":"Outils", "nav.features":"Fonctionnalités", "nav.exclusive":"Exclusif", "nav.showcase":"Exemples", "nav.opinions":"Avis", "nav.login":"Connexion", "nav.signup":"Créer un compte",
-
       "nav.jobs": "Emplois", "sector.public": "Secteur public", "sector.private": "Secteur privé",
       "nav.steps": "Étapes", "nav.cv": "CV", "nav.pricing": "Tarifs", "nav.faq": "FAQ",
       "hero.pill": "✦ Bienvenue sur Salarié", "hero.h1": "Des solutions simples et intelligentes",
@@ -426,8 +430,6 @@ footer a:hover{color:#fff}
       "footer.privacy": "Politique de confidentialité", "footer.terms": "Conditions d’utilisation", "footer.copy": "© 2026 Salarié. Tous droits réservés."
     },
     en: {
-      "nav.tools":"Tools", "nav.features":"Features", "nav.exclusive":"Exclusive", "nav.showcase":"Showcase", "nav.opinions":"Reviews", "nav.login":"Log in", "nav.signup":"Create account",
-
       "nav.jobs": "Jobs", "sector.public": "Public sector", "sector.private": "Private sector",
       "nav.steps": "Steps", "nav.cv": "Resume", "nav.pricing": "Pricing", "nav.faq": "FAQ",
       "hero.pill": "✦ Welcome to Salarié", "hero.h1": "Smart and simple solutions",
@@ -506,18 +508,6 @@ footer a:hover{color:#fff}
   }
 
   document.getElementById("langSelect").addEventListener("change", e => setLanguage(e.target.value));
-  const mobileMenuBtn = document.getElementById("mobileMenuBtn");
-  const mobileNav = document.getElementById("mobileNav");
-  mobileMenuBtn.addEventListener("click", () => {
-    const opened = mobileNav.classList.toggle("open");
-    mobileMenuBtn.setAttribute("aria-expanded", String(opened));
-    mobileMenuBtn.textContent = opened ? "×" : "☰";
-  });
-  mobileNav.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
-    mobileNav.classList.remove("open");
-    mobileMenuBtn.setAttribute("aria-expanded", "false");
-    mobileMenuBtn.textContent = "☰";
-  }));
   document.getElementById("themeBtn").addEventListener("click", () => {
     setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark");
   });
